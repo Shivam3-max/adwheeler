@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
-import { PRICING } from "@/lib/site";
-import { cn } from "@/lib/utils";
+import BookingSystems from "@/components/BookingSystems";
+import CTABand from "@/components/CTABand";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "Transparent, flexible plans for mobile LED advertising campaigns.",
+  description: "Two simple ways to book AD Wheeler — full-day exclusive at ₹9,000, or shared slots at ₹5,000.",
 };
 
 const FAQ = [
-  { q: "What counts as an impression?", a: "A dwell-weighted exposure, modelled from GPS, traffic density and time-of-day — not a flat pass-by." },
-  { q: "Can I change creative mid-campaign?", a: "Yes, instantly across the whole fleet, at no extra cost." },
-  { q: "Is there a minimum commitment?", a: "The Starter plan runs weekly. Longer commitments unlock better rates." },
+  { q: "What are the running hours?", a: "Every vehicle runs the prime evening window — 4 PM to 10 PM — when streets and markets are busiest." },
+  { q: "What's the difference between the two systems?", a: "Full-Day Booking is exclusive: one brand owns the whole 4–10 PM window. The Slot System is shared: up to three brands rotate, with each ad changing every 2 minutes." },
+  { q: "Is the full-day price negotiable?", a: "No — ₹9,000 per day is a flat, non-negotiable rate for complete exclusivity." },
+  { q: "How much screen time does one slot get?", a: "With ads rotating every 2 minutes across three brands, each slot accumulates roughly 2 hours of total screen time over the evening." },
+  { q: "Can I change my creative?", a: "Yes. Send us your ad and we load it — swaps are quick and there's no extra charge." },
+  { q: "Where do the vehicles run?", a: "Across Panchkula and the Tricity today, with more cities rolling out. Tell us your target area and we'll route for it." },
 ];
 
 export default function PricingPage() {
@@ -21,47 +23,17 @@ export default function PricingPage() {
     <>
       <PageHero
         eyebrow="Pricing"
-        title={<>Plans that scale with <span className="text-gradient">your ambition.</span></>}
-        sub="Placeholder pricing for demonstration. Every plan includes GPS tracking, live reporting and proof-of-performance."
+        title={<>Simple pricing. <span className="text-gradient">No packages.</span></>}
+        sub="Two ways to book, one flat rate each. Pick the whole evening, or share a slot."
       />
 
-      <section className="section pt-4">
-        <div className="wrap grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {PRICING.map((p, i) => (
-            <Reveal key={p.name} delay={(i % 4) * 70}>
-              <div className={cn("relative h-full rounded-[26px] border p-7 flex flex-col overflow-hidden transition-transform duration-500 hover:-translate-y-1",
-                p.featured ? "border-[var(--amber)]/50 bg-[rgba(255,158,27,0.05)]" : "border-[var(--line)] bg-[var(--surface)]")}>
-                {p.featured && (
-                  <>
-                    <div className="pointer-events-none absolute -top-16 -right-10 w-40 h-40 rounded-full blur-3xl bg-[rgba(255,158,27,0.18)]" />
-                    <span className="absolute top-5 right-5 chip !text-amber !border-[var(--amber)]/50">Popular</span>
-                  </>
-                )}
-                <p className="font-display text-xl mb-1">{p.name}</p>
-                <p className="text-sm text-[var(--muted)] mb-6 min-h-[40px]">{p.desc}</p>
-                <p className="mb-6">
-                  <span className="font-display text-3xl md:text-4xl">{p.price}</span>
-                  <span className="text-sm text-[var(--muted)]">{p.unit}</span>
-                </p>
-                <ul className="space-y-2.5 mb-8 flex-1">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-sm text-[var(--ink-dim)]">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="mt-0.5 shrink-0 text-amber"><path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <Link href="/campaign-planner" className={cn("btn justify-center", p.featured ? "btn-primary" : "btn-ghost")}>{p.cta}</Link>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <BookingSystems heading={false} />
 
       <section className="section pt-0">
         <div className="wrap max-w-3xl">
           <Reveal className="mb-8">
-            <h2 className="display text-[clamp(1.8rem,4vw,2.8rem)]">Pricing questions.</h2>
+            <p className="eyebrow mb-3">Questions</p>
+            <h2 className="display text-[clamp(1.8rem,4vw,2.8rem)]">Everything you need to know.</h2>
           </Reveal>
           <div className="space-y-3">
             {FAQ.map((f) => (
@@ -78,6 +50,8 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
+
+      <CTABand title="Ready to hit the road?" primary={{ label: "Book your ad", href: "/campaign-planner" }} secondary={{ label: "Talk to us", href: "/contact" }} />
     </>
   );
 }

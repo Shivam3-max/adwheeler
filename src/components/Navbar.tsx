@@ -7,7 +7,7 @@ import { NAV, BRAND } from "@/lib/site";
 import Magnetic from "./Magnetic";
 import { cn } from "@/lib/utils";
 
-const PRIMARY = ["/fleet", "/solutions", "/cities", "/technology", "/franchise"];
+const PRIMARY = ["/pricing", "/solutions", "/cities", "/franchise", "/about"];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -46,7 +46,7 @@ export default function Navbar() {
           className={cn(
             "wrap flex items-center justify-between rounded-full transition-all duration-500",
             scrolled &&
-              "border border-[var(--line)] bg-[rgba(9,10,14,0.72)] backdrop-blur-xl py-2.5 !px-4 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.9)]"
+              "border border-[var(--line)] bg-white/80 backdrop-blur-xl py-2.5 !px-4 shadow-[var(--shadow-md)]"
           )}
           style={scrolled ? { maxWidth: 1120 } : undefined}
         >
@@ -76,11 +76,13 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2.5">
-            <Magnetic strength={0.25} className="hidden sm:inline-flex">
-              <Link href="/campaign-planner" className="btn btn-primary text-sm">
-                Book Campaign
-              </Link>
-            </Magnetic>
+            <div className="hidden sm:block">
+              <Magnetic strength={0.25}>
+                <Link href="/campaign-planner" className="btn btn-primary text-sm">
+                  Book your ad
+                </Link>
+              </Magnetic>
+            </div>
             <button
               onClick={() => setOpen((v) => !v)}
               aria-label="Menu"
@@ -113,7 +115,7 @@ export default function Navbar() {
         )}
       >
         <div
-          className="absolute inset-0 bg-[rgba(5,5,8,0.86)] backdrop-blur-2xl"
+          className="absolute inset-0 bg-white/90 backdrop-blur-2xl"
           onClick={() => setOpen(false)}
         />
         <div

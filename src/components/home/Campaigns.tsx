@@ -2,11 +2,11 @@ import { CAMPAIGNS } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 
 const GRADS = [
-  "from-[#1358d8] to-[#38e5df]",
-  "from-[#e2b100] to-[#c81e5a]",
+  "from-[#1358d8] to-[#0ba7a0]",
+  "from-[#f7861a] to-[#c81e5a]",
   "from-[#0a8f83] to-[#134e8f]",
-  "from-[#c81e5a] to-[#ff9e1b]",
-  "from-[#5b21b6] to-[#38e5df]",
+  "from-[#c81e5a] to-[#f7861a]",
+  "from-[#5b21b6] to-[#0ba7a0]",
 ];
 
 export default function Campaigns() {

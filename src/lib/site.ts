@@ -5,11 +5,12 @@
 export const BRAND = {
   name: "AD Wheeler",
   version: "2.0",
-  tagline: "India's First Smart Mobile Digital Advertising Network",
+  tagline: "Panchkula & Tricity's smart mobile LED advertising — now going pan-India",
   phone: "+91 98889 87161",
   phoneRaw: "919888987161",
   email: "hello@adwheeler.in",
-  address: "Eco City, New Chandigarh, Punjab 140901",
+  base: "Panchkula · Tricity",
+  address: "Panchkula, Haryana — serving Tricity (Chandigarh · Mohali · Panchkula)",
 };
 
 export const NAV = [
@@ -27,37 +28,76 @@ export const NAV = [
 ];
 
 export const STATS = [
-  { value: 18, suffix: "+", label: "Cities Covered" },
-  { value: 240, suffix: "+", label: "Smart Vehicles" },
-  { value: 1600, suffix: "+", label: "Campaigns Run" },
-  { value: 42, suffix: "L", label: "Daily Eyeballs" },
-  { value: 380, suffix: "+", label: "Brands Served" },
+  { value: 24, suffix: "+", label: "LED vehicles" },
+  { value: 6, suffix: " hrs", label: "Live every evening" },
+  { value: 2, suffix: " min", label: "Slot rotation" },
+  { value: 120, suffix: "+", label: "Brands served" },
+  { value: 12, suffix: "+", label: "Cities on roadmap" },
+];
+
+// Booking window that the whole business runs on.
+export const WINDOW = { start: "4 PM", end: "10 PM", hours: 6 };
+
+// The only two ways to book. Full-day = one exclusive brand. Slot = shared, rotating.
+export const BOOKING = [
+  {
+    id: "full-day",
+    name: "Full-Day Booking",
+    badge: "Exclusive",
+    price: "₹9,000",
+    unit: "per day",
+    note: "Flat rate · non-negotiable",
+    tagline: "One brand owns the entire evening.",
+    points: [
+      "Runs 4 PM – 10 PM, non-stop",
+      "100% of screen time — your brand only",
+      "No rotation, no sharing with anyone",
+      "GPS-tracked route across the city",
+    ],
+  },
+  {
+    id: "slot",
+    name: "Slot System",
+    badge: "Shared",
+    price: "₹5,000",
+    unit: "per slot",
+    note: "3 slots available each day",
+    tagline: "Share the evening, split the cost.",
+    points: [
+      "3 slots across the 4 PM – 10 PM window",
+      "Ads rotate every 2 minutes",
+      "≈ 2 hours of total screen time per slot",
+      "Up to 3 brands share the same day",
+    ],
+  },
 ];
 
 export type City = {
   name: string;
   state: string;
-  population: string;
-  dailyReach: string;
-  fleet: number;
-  x: number; // % coords on India map viewBox
+  status: "live" | "soon";
+  note: string;
+  x: number; // coords on India SVG viewBox (0 0 612 696)
   y: number;
-  tier: 1 | 2;
+  hq?: boolean;
 };
 
+// Positioned on the real India map (viewBox 0 0 612 696).
 export const CITIES: City[] = [
-  { name: "Chandigarh", state: "Punjab", population: "12.6 L", dailyReach: "4.2 L", fleet: 42, x: 44, y: 24, tier: 1 },
-  { name: "Delhi NCR", state: "Delhi", population: "3.2 Cr", dailyReach: "9.8 L", fleet: 58, x: 46, y: 30, tier: 1 },
-  { name: "Ludhiana", state: "Punjab", population: "18.7 L", dailyReach: "3.1 L", fleet: 22, x: 42, y: 26, tier: 2 },
-  { name: "Jaipur", state: "Rajasthan", population: "39.5 L", dailyReach: "4.6 L", fleet: 26, x: 40, y: 37, tier: 1 },
-  { name: "Mumbai", state: "Maharashtra", population: "2.0 Cr", dailyReach: "8.4 L", fleet: 40, x: 34, y: 58, tier: 1 },
-  { name: "Pune", state: "Maharashtra", population: "71.2 L", dailyReach: "5.2 L", fleet: 24, x: 37, y: 60, tier: 1 },
-  { name: "Ahmedabad", state: "Gujarat", population: "82.5 L", dailyReach: "5.0 L", fleet: 20, x: 31, y: 47, tier: 2 },
-  { name: "Bengaluru", state: "Karnataka", population: "1.3 Cr", dailyReach: "7.1 L", fleet: 34, x: 43, y: 74, tier: 1 },
-  { name: "Hyderabad", state: "Telangana", population: "1.0 Cr", dailyReach: "6.3 L", fleet: 28, x: 47, y: 66, tier: 1 },
-  { name: "Chennai", state: "Tamil Nadu", population: "1.1 Cr", dailyReach: "6.0 L", fleet: 26, x: 50, y: 78, tier: 1 },
-  { name: "Lucknow", state: "Uttar Pradesh", population: "35.0 L", dailyReach: "3.8 L", fleet: 18, x: 54, y: 37, tier: 2 },
-  { name: "Kolkata", state: "West Bengal", population: "1.4 Cr", dailyReach: "6.8 L", fleet: 30, x: 68, y: 47, tier: 1 },
+  { name: "Panchkula · Tricity", state: "Haryana / Punjab", status: "live", note: "Head office & first fleet", x: 186, y: 158, hq: true },
+  { name: "Chandigarh", state: "Chandigarh UT", status: "live", note: "Core Tricity coverage", x: 176, y: 164 },
+  { name: "Mohali", state: "Punjab", status: "live", note: "Core Tricity coverage", x: 168, y: 170 },
+  { name: "Ludhiana", state: "Punjab", status: "live", note: "Now on the road", x: 156, y: 150 },
+  { name: "Delhi NCR", state: "Delhi", status: "soon", note: "Launching next", x: 190, y: 212 },
+  { name: "Jaipur", state: "Rajasthan", status: "soon", note: "On the roadmap", x: 168, y: 240 },
+  { name: "Lucknow", state: "Uttar Pradesh", status: "soon", note: "On the roadmap", x: 268, y: 250 },
+  { name: "Ahmedabad", state: "Gujarat", status: "soon", note: "On the roadmap", x: 112, y: 330 },
+  { name: "Mumbai", state: "Maharashtra", status: "soon", note: "On the roadmap", x: 150, y: 440 },
+  { name: "Pune", state: "Maharashtra", status: "soon", note: "On the roadmap", x: 168, y: 452 },
+  { name: "Hyderabad", state: "Telangana", status: "soon", note: "On the roadmap", x: 226, y: 458 },
+  { name: "Kolkata", state: "West Bengal", status: "soon", note: "On the roadmap", x: 410, y: 352 },
+  { name: "Bengaluru", state: "Karnataka", status: "soon", note: "On the roadmap", x: 198, y: 560 },
+  { name: "Chennai", state: "Tamil Nadu", status: "soon", note: "On the roadmap", x: 246, y: 560 },
 ];
 
 export const SOLUTIONS = [
@@ -132,60 +172,20 @@ export const FLEET = [
 ];
 
 export const JOURNEY = [
-  { step: "01", title: "Upload Creative", desc: "Drop your video or image. Any format, any ratio." },
-  { step: "02", title: "AI Validation", desc: "Auto-checks brightness, safe-zones, and content policy." },
-  { step: "03", title: "Vehicle Assignment", desc: "Smart engine matches fleet to your target zones." },
-  { step: "04", title: "GPS Route Locked", desc: "Optimised routes maximise dwell in high-density areas." },
-  { step: "05", title: "Campaign Goes Live", desc: "Screens light up. Your brand starts moving." },
-  { step: "06", title: "Live Tracking", desc: "Watch every vehicle on a real-time map, 10Hz." },
-  { step: "07", title: "Performance Report", desc: "Impressions, heatmaps, and geo-tagged proof photos." },
+  { step: "01", title: "Send your ad", desc: "Share your image or video — any format works." },
+  { step: "02", title: "Pick your booking", desc: "Full-day exclusive, or a shared slot. That's it." },
+  { step: "03", title: "We load it on", desc: "Your creative goes live on the LED screen." },
+  { step: "04", title: "Hits the road", desc: "Runs the busy 4 PM – 10 PM evening window." },
+  { step: "05", title: "GPS-tracked live", desc: "Follow the vehicle's route across the city in real time." },
+  { step: "06", title: "Proof & report", desc: "Geo-tagged photos and a simple run report after." },
 ];
 
 export const CAMPAIGNS = [
-  { brand: "Elite Outfits", cat: "Retail", metric: "+38% walk-ins", quote: "Every rickshaw was a moving storefront.", area: "Eco City, Chandigarh" },
-  { brand: "Super Dan Pizza", cat: "QSR", metric: "2.1× orders", quote: "Dinner-hour routing was pure genius.", area: "Sector 17 belt" },
-  { brand: "Skyline Residences", cat: "Real Estate", metric: "410 site visits", quote: "We parked the ad outside the plot itself.", area: "New Chandigarh" },
-  { brand: "Aveda Clinics", cat: "Healthcare", metric: "6.4 L reach", quote: "Launch week saturation, fully geo-verified.", area: "Tri-city" },
-  { brand: "VoteForward", cat: "Political", metric: "92% ward cover", quote: "Proof-of-coverage sealed the deal.", area: "Mohali constituency" },
-];
-
-export const PRICING = [
-  {
-    name: "Starter",
-    price: "₹24,999",
-    unit: "/ week",
-    desc: "Test the streets. One vehicle, one zone.",
-    features: ["1 smart vehicle", "8 hrs / day runtime", "Single target zone", "Weekly report", "GPS tracking"],
-    cta: "Start small",
-    featured: false,
-  },
-  {
-    name: "Growth",
-    price: "₹89,999",
-    unit: "/ week",
-    desc: "The sweet spot for local launches.",
-    features: ["4 vehicles", "10 hrs / day runtime", "3 target zones", "Dayparting", "Live dashboard", "Proof photos"],
-    cta: "Scale up",
-    featured: true,
-  },
-  {
-    name: "Professional",
-    price: "₹2,49,999",
-    unit: "/ week",
-    desc: "City-wide domination for serious brands.",
-    features: ["12 vehicles", "12 hrs / day runtime", "City-wide routing", "AI optimisation", "Heatmap analytics", "Dedicated manager"],
-    cta: "Go big",
-    featured: false,
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    unit: "",
-    desc: "Multi-city, always-on brand presence.",
-    features: ["50+ vehicles", "Multi-city network", "API + data export", "White-glove ops", "Custom SLAs", "Quarterly strategy"],
-    cta: "Talk to sales",
-    featured: false,
-  },
+  { brand: "Elite Outfits", cat: "Retail", metric: "+38% walk-ins", quote: "Every evening it was a moving storefront.", area: "Panchkula" },
+  { brand: "Super Dan Pizza", cat: "QSR", metric: "2.1× orders", quote: "The dinner-hour window was pure genius.", area: "Sector 17, Chandigarh" },
+  { brand: "Skyline Residences", cat: "Real Estate", metric: "410 site visits", quote: "We parked the ad right by the project.", area: "Zirakpur" },
+  { brand: "Aveda Clinics", cat: "Healthcare", metric: "6.4 L reach", quote: "Launch-week visibility across the Tricity.", area: "Mohali" },
+  { brand: "VoteForward", cat: "Political", metric: "92% ward cover", quote: "GPS proof-of-coverage sealed the deal.", area: "Panchkula" },
 ];
 
 export const CASE_STUDIES = [

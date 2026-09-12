@@ -1,30 +1,30 @@
 import Hero from "@/components/home/Hero";
+import VideoBlock from "@/components/home/VideoBlock";
 import Marquee from "@/components/Marquee";
-import Stats from "@/components/home/Stats";
+import BookingSystems from "@/components/BookingSystems";
+import Journey from "@/components/home/Journey";
 import Coverage from "@/components/home/Coverage";
 import Compare from "@/components/home/Compare";
-import FleetShowcase from "@/components/home/FleetShowcase";
-import Journey from "@/components/home/Journey";
 import Solutions from "@/components/home/Solutions";
 import Campaigns from "@/components/home/Campaigns";
+import Stats from "@/components/home/Stats";
 import Dashboard from "@/components/home/Dashboard";
-import Franchise from "@/components/home/Franchise";
 import FinalCTA from "@/components/home/FinalCTA";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <VideoBlock />
       <Marquee />
-      <Stats />
+      <BookingSystems />
+      <Journey />
       <Coverage />
       <Compare />
-      <FleetShowcase />
-      <Journey />
       <Solutions />
       <Campaigns />
+      <Stats />
       <Dashboard />
-      <Franchise />
       <FinalCTA />
     </>
   );

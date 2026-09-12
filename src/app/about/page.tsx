@@ -10,11 +10,10 @@ export const metadata: Metadata = {
 };
 
 const TIMELINE = [
-  { year: "2021", title: "The idea", desc: "A single LED e-rickshaw looped Chandigarh's Sector 17. Brands noticed." },
-  { year: "2022", title: "First fleet", desc: "12 vehicles, one city, and the first GPS-tracked campaigns." },
-  { year: "2023", title: "The platform", desc: "Live tracking, heatmaps and proof-of-performance went online." },
-  { year: "2024", title: "Multi-city", desc: "Expansion across the Tricity, Delhi NCR and Jaipur." },
-  { year: "2026", title: "AD Wheeler 2.0", desc: "AI routing, franchise network and 240+ smart vehicles nationwide." },
+  { year: "2023", title: "The idea", desc: "A single LED vehicle looped Panchkula's busy markets. Brands noticed." },
+  { year: "2024", title: "First fleet", desc: "A handful of GPS-tracked vehicles running across the Tricity." },
+  { year: "2025", title: "The model", desc: "Two simple ways to book — full-day exclusive and shared slots — took off." },
+  { year: "2026", title: "AD Wheeler 2.0", desc: "A growing fleet and a franchise network taking it pan-India." },
 ];
 
 const VALUES = [
@@ -56,10 +55,10 @@ export default function AboutPage() {
 
           <Reveal delay={120} className="grid grid-cols-2 gap-4">
             {[
-              { n: 240, s: "+", l: "Smart vehicles" },
-              { n: 18, s: "+", l: "Cities live" },
-              { n: 380, s: "+", l: "Brands served" },
-              { n: 42, s: "L", l: "Daily eyeballs" },
+              { n: 24, s: "+", l: "LED vehicles" },
+              { n: 4, s: "", l: "Cities live" },
+              { n: 120, s: "+", l: "Brands served" },
+              { n: 6, s: " hrs", l: "Live nightly" },
             ].map((k) => (
               <div key={k.l} className="card p-6">
                 <p className="font-display text-4xl text-amber"><Counter to={k.n} suffix={k.s} /></p>

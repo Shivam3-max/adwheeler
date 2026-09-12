@@ -1,36 +1,35 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
-import RoiCalculator from "@/components/RoiCalculator";
-import { GlobeCanvas } from "@/components/three/Lazy";
+import IndiaMap from "@/components/IndiaMap";
 import FranchiseForm from "@/components/FranchiseForm";
 
 export const metadata: Metadata = {
   title: "Franchise",
-  description: "Own an AD Wheeler territory — turnkey fleet, technology and playbook.",
+  description: "Bring AD Wheeler to your city — turnkey electric LED fleet, a proven booking model and full support.",
 };
 
 const HIGHLIGHTS = [
-  { k: "From ₹18 L", l: "Entry investment", d: "Starter territory with a small fleet." },
-  { k: "12–16 mo", l: "Typical payback", d: "Indicative, varies by city & contracts." },
-  { k: "45–55%", l: "Operating margin", d: "After fleet, power and ops costs." },
-  { k: "Exclusive", l: "Territory rights", d: "Protected zones, first-mover advantage." },
+  { k: "Exclusive", l: "City territory", d: "A protected zone and first-mover advantage in your market." },
+  { k: "Turnkey", l: "Fleet & setup", d: "Vehicles, screens and tracking — delivered road-ready." },
+  { k: "₹9K / ₹5K", l: "Proven pricing", d: "The simple full-day and slot model, ready to sell." },
+  { k: "Full", l: "Training & support", d: "Sales playbook, creative help and central operations." },
 ];
 
 const SUPPORT = [
-  { t: "Turnkey fleet", d: "Vehicles delivered, wrapped, road-ready and connected." },
-  { t: "The platform", d: "Full access to tracking, analytics and reporting tools." },
-  { t: "Sales playbook", d: "Pitch decks, pricing models and proven ad-sales training." },
-  { t: "Central ops", d: "Creative validation, maintenance network and 24/7 support." },
-  { t: "Brand power", d: "National brand, marketing assets and lead sharing." },
-  { t: "Ongoing R&D", d: "Hardware and software upgrades pushed to your fleet." },
+  { t: "Turnkey fleet", d: "Electric LED vehicles delivered, wrapped and connected." },
+  { t: "Live tracking", d: "The GPS platform to run, monitor and prove every campaign." },
+  { t: "Sales playbook", d: "Pricing, pitch and proven ad-sales training from day one." },
+  { t: "Central ops", d: "Creative handling, maintenance guidance and ongoing support." },
+  { t: "Brand power", d: "The AD Wheeler name, marketing assets and shared leads." },
+  { t: "Simple model", d: "Just two products to sell — full-day and slots. Easy to run." },
 ];
 
 const FAQ = [
-  { q: "How much space do I need?", a: "A modest depot for charging and parking — roughly 1,500 sq ft for a starter fleet." },
-  { q: "Do I need advertising experience?", a: "No. Our training and playbook cover sales, ops and creative from day one." },
-  { q: "Who handles the technology?", a: "We do. You get the platform fully managed; you focus on local sales and ops." },
-  { q: "How are territories allocated?", a: "Exclusive, population-weighted zones — first come, first served within each city." },
+  { q: "Do I need advertising experience?", a: "No. Our training and playbook cover sales, operations and creative from day one." },
+  { q: "How does the money work?", a: "You sell the two simple products — full-day bookings at ₹9,000 and slots at ₹5,000 — across your city's evening runs." },
+  { q: "Who handles the technology?", a: "We do. You get the tracking platform fully managed; you focus on local sales and running the fleet." },
+  { q: "How are territories allocated?", a: "Exclusive city zones, first come, first served — Panchkula & Tricity are already ours, the rest of India is open." },
 ];
 
 export default function FranchisePage() {
@@ -38,12 +37,12 @@ export default function FranchisePage() {
     <>
       <PageHero
         eyebrow="Franchise"
-        title={<>Own a slice of the <span className="text-gradient">moving grid.</span></>}
-        sub="Bring India's smartest advertising network to your city — with a turnkey fleet, a proven platform and a playbook that works."
+        title={<>Bring AD Wheeler <span className="text-gradient">to your city.</span></>}
+        sub="We've proven the model in Panchkula and the Tricity. Now we're handing the keys to partners across India — turnkey fleet, simple pricing, full support."
       >
         <div className="mt-8 flex flex-wrap gap-3">
           <a href="#apply" className="btn btn-primary">Apply now</a>
-          <a href="#roi" className="btn btn-ghost">Run the numbers</a>
+          <a href="#territories" className="btn btn-ghost">See open territories</a>
         </div>
       </PageHero>
 
@@ -60,23 +59,14 @@ export default function FranchisePage() {
         </div>
       </section>
 
-      {/* ROI + globe */}
-      <section id="roi" className="section">
-        <div className="wrap grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <Reveal>
-              <p className="eyebrow mb-4">The economics</p>
-              <h2 className="display text-[clamp(1.8rem,4.5vw,3.2rem)] mb-5">Model your return.</h2>
-              <p className="text-[var(--ink-dim)] max-w-md mb-8">
-                Drag the sliders to see how fleet size, day rate and utilisation shape
-                your revenue and payback. Territories light up worldwide — India first.
-              </p>
-            </Reveal>
-            <Reveal delay={120} className="relative h-64 md:h-80">
-              <GlobeCanvas />
-            </Reveal>
-          </div>
-          <Reveal delay={80}><RoiCalculator /></Reveal>
+      {/* territories */}
+      <section id="territories" className="section">
+        <div className="wrap">
+          <Reveal className="max-w-xl mb-12">
+            <p className="eyebrow mb-4">Open territories</p>
+            <h2 className="display text-[clamp(1.8rem,4.5vw,3.2rem)]">Claim your city before someone else does.</h2>
+          </Reveal>
+          <Reveal><IndiaMap /></Reveal>
         </div>
       </section>
 

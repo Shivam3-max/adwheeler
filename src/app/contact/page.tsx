@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 };
 
 const OFFICES = [
-  { city: "Chandigarh", role: "Head office", addr: BRAND.address },
-  { city: "Delhi NCR", role: "North hub", addr: "Sector 62, Noida, Uttar Pradesh 201301" },
-  { city: "Bengaluru", role: "South hub", addr: "Indiranagar, Bengaluru, Karnataka 560038" },
+  { city: "Panchkula", role: "Head office", addr: "Panchkula, Haryana — Tricity" },
+  { city: "Chandigarh · Mohali", role: "Tricity fleet", addr: "Full coverage across the Tricity" },
+  { city: "Pan-India", role: "Expanding", addr: "New cities rolling out — talk to us" },
 ];
 
 export default function ContactPage() {
@@ -46,18 +46,18 @@ export default function ContactPage() {
 
             {/* stylised map */}
             <Reveal delay={80} className="card p-0 overflow-hidden">
-              <div className="relative h-64 bg-[#0a0c12]">
-                <div className="absolute inset-0 grid-lines opacity-60" />
+              <div className="relative h-64 bg-[var(--bg-2)]">
+                <div className="absolute inset-0 grid-lines opacity-70" />
                 <svg viewBox="0 0 400 260" className="absolute inset-0 w-full h-full">
-                  <path d="M0 180 C 90 150 120 200 200 170 S 320 140 400 175" fill="none" stroke="rgba(56,229,223,0.25)" strokeWidth="2" />
-                  <path d="M40 60 C 120 90 160 40 240 80 S 360 120 400 90" fill="none" stroke="rgba(255,158,27,0.2)" strokeWidth="2" />
-                  <circle cx="150" cy="150" r="6" fill="#ff9e1b" />
-                  <circle cx="150" cy="150" r="6" fill="none" stroke="#ff9e1b" strokeWidth="1.5">
+                  <path d="M0 180 C 90 150 120 200 200 170 S 320 140 400 175" fill="none" stroke="rgba(11,167,160,0.35)" strokeWidth="2" />
+                  <path d="M40 60 C 120 90 160 40 240 80 S 360 120 400 90" fill="none" stroke="rgba(247,134,26,0.3)" strokeWidth="2" />
+                  <circle cx="150" cy="150" r="6" fill="#f7861a" />
+                  <circle cx="150" cy="150" r="6" fill="none" stroke="#f7861a" strokeWidth="1.5">
                     <animate attributeName="r" values="6;20;6" dur="3s" repeatCount="indefinite" />
                     <animate attributeName="opacity" values="0.8;0;0.8" dur="3s" repeatCount="indefinite" />
                   </circle>
                 </svg>
-                <span className="absolute bottom-4 left-4 chip">Head office · New Chandigarh</span>
+                <span className="absolute bottom-4 left-4 chip">Head office · Panchkula</span>
               </div>
             </Reveal>
           </div>

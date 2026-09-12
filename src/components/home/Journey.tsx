@@ -11,7 +11,7 @@ export default function Journey() {
             From creative to <span className="text-gradient">city streets.</span>
           </h2>
           <p className="mt-5 text-[var(--ink-dim)]">
-            Seven steps. Upload to live in under an hour.
+            Six simple steps — from your ad to the street in under an hour.
           </p>
         </Reveal>
       </div>

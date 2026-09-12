@@ -35,7 +35,7 @@ export default function BlogPage() {
           {/* featured */}
           <Reveal>
             <Link href="/blog" className="card group grid lg:grid-cols-[1.1fr_0.9fr] overflow-hidden mb-6">
-              <div className="relative min-h-[280px] bg-gradient-to-br from-[#1358d8] via-[#5b21b6] to-[#38e5df]">
+              <div className="relative min-h-[280px] bg-gradient-to-br from-[#1358d8] via-[#5b21b6] to-[#0ba7a0]">
                 <div className="absolute inset-0 opacity-25 mix-blend-overlay bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,rgba(0,0,0,0.4)_3px)]" />
                 <span className="absolute top-5 left-5 chip !bg-black/25 !border-white/25 !text-white">Featured</span>
               </div>
