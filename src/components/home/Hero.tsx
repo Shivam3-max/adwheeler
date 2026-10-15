@@ -84,24 +84,31 @@ export default function Hero() {
 
         {/* road surface */}
         <div className="absolute bottom-0 inset-x-0 h-[86px] md:h-[96px] bg-[linear-gradient(180deg,#eceef2,#e2e5ea)] border-t border-[var(--line)]">
-          {/* dashed center line */}
-          <div
-            className="absolute top-1/2 -translate-y-1/2 inset-x-0 h-[4px]"
-            style={{
-              backgroundImage: "repeating-linear-gradient(90deg, var(--amber) 0 60px, transparent 60px 120px)",
-              backgroundSize: "220px 4px",
-              animation: "road-dash 1.4s linear infinite",
-              opacity: 0.65,
-            }}
-          />
+          {/* dashed center line (transform-animated for smoothness) */}
+          <div className="absolute top-1/2 -translate-y-1/2 inset-x-0 h-[4px] overflow-hidden">
+            <div
+              className="h-full w-[200%]"
+              style={{
+                backgroundImage: "repeating-linear-gradient(90deg, var(--amber) 0 60px, transparent 60px 120px)",
+                backgroundSize: "220px 4px",
+                animation: "dash-move 1.4s linear infinite",
+                opacity: 0.6,
+                willChange: "transform",
+              }}
+            />
+          </div>
         </div>
 
         {/* the LED vehicles (two, staggered, so the road is never empty) */}
         {[0, -6.5].map((delay, i) => (
           <div
             key={i}
-            className="absolute bottom-[64px] md:bottom-[72px] left-0 will-change-transform"
-            style={{ animation: `car-drive 13s linear ${delay}s infinite` }}
+            className="absolute bottom-[64px] md:bottom-[72px] left-0"
+            style={{
+              animation: `car-drive 13s linear ${delay}s infinite`,
+              willChange: "transform",
+              backfaceVisibility: "hidden",
+            }}
           >
             <div style={{ animation: "car-bob 1.2s ease-in-out infinite" }}>
               <Vehicle />
@@ -128,12 +135,12 @@ function Vehicle() {
           <rect x="120" y="28" width="88" height="86" rx="6" fill="#141414" stroke="#000" strokeWidth="2" />
           <rect x="120" y="20" width="88" height="10" rx="3" fill="#0d0d0d" />
           {/* wheels */}
-          <g style={{ transformOrigin: "58px 122px", animation: "wheel-spin 0.9s linear infinite" }}>
+          <g className="wheel">
             <circle cx="58" cy="122" r="17" fill="#14161b" stroke="#2a2d34" strokeWidth="4" />
             <line x1="58" y1="108" x2="58" y2="136" stroke="#3a3d45" strokeWidth="2" />
             <line x1="44" y1="122" x2="72" y2="122" stroke="#3a3d45" strokeWidth="2" />
           </g>
-          <g style={{ transformOrigin: "176px 122px", animation: "wheel-spin 0.9s linear infinite" }}>
+          <g className="wheel">
             <circle cx="176" cy="122" r="17" fill="#14161b" stroke="#2a2d34" strokeWidth="4" />
             <line x1="176" y1="108" x2="176" y2="136" stroke="#3a3d45" strokeWidth="2" />
             <line x1="162" y1="122" x2="190" y2="122" stroke="#3a3d45" strokeWidth="2" />

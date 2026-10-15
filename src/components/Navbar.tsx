@@ -50,12 +50,15 @@ export default function Navbar() {
           )}
           style={scrolled ? { maxWidth: 1120 } : undefined}
         >
-          <Link href="/" className="flex items-center gap-2.5 shrink-0" aria-label={BRAND.name}>
-            <Logo />
-            <span className="font-display text-[1.05rem] font-semibold tracking-tight">
-              {BRAND.name}
-              <span className="text-amber"> 2.0</span>
-            </span>
+          <Link href="/" className="flex items-center shrink-0" aria-label={BRAND.name}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/adwheeler-logo.png"
+              alt="AdWheeler"
+              width={94}
+              height={50}
+              className="h-9 md:h-10 w-auto"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
@@ -120,53 +123,45 @@ export default function Navbar() {
         />
         <div
           className={cn(
-            "absolute inset-0 flex flex-col justify-center wrap transition-transform duration-700",
+            "absolute inset-0 overflow-y-auto transition-transform duration-700",
             open ? "translate-y-0" : "-translate-y-4"
           )}
         >
-          <p className="eyebrow mb-8">Navigate</p>
-          <nav className="grid sm:grid-cols-2 gap-x-16 gap-y-1 max-w-3xl">
-            {[{ label: "Home", href: "/" }, ...NAV, { label: "Contact", href: "/contact" }].map(
-              (item, i) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="group flex items-baseline gap-4 py-2.5 border-b border-[var(--line)]"
-                >
-                  <span className="font-mono text-xs text-[var(--faint)] w-6">
-                    {String(i).padStart(2, "0")}
-                  </span>
-                  <span className="font-display text-2xl md:text-3xl font-medium text-[var(--muted)] group-hover:text-[var(--ink)] group-hover:translate-x-1 transition-all duration-300">
-                    {item.label}
-                  </span>
-                </Link>
-              )
-            )}
-          </nav>
-          <div className="mt-12 flex flex-wrap items-center gap-6 text-sm text-[var(--muted)]">
-            <a href={`tel:${BRAND.phoneRaw}`} className="hover:text-amber transition-colors">
-              {BRAND.phone}
-            </a>
-            <span className="text-[var(--faint)]">·</span>
-            <a href={`mailto:${BRAND.email}`} className="hover:text-amber transition-colors">
-              {BRAND.email}
-            </a>
+          <div className="wrap min-h-full flex flex-col justify-center py-24 sm:py-28">
+            <p className="eyebrow mb-5 sm:mb-8">Navigate</p>
+            <nav className="grid sm:grid-cols-2 sm:gap-x-16 gap-y-0 sm:gap-y-1 max-w-3xl w-full">
+              {[{ label: "Home", href: "/" }, ...NAV, { label: "Contact", href: "/contact" }].map(
+                (item, i) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="group flex items-baseline gap-4 py-2 sm:py-2.5 border-b border-[var(--line)]"
+                  >
+                    <span className="font-mono text-xs text-[var(--faint)] w-6">
+                      {String(i).padStart(2, "0")}
+                    </span>
+                    <span className="font-display text-xl sm:text-2xl md:text-3xl font-medium text-[var(--muted)] group-hover:text-[var(--ink)] group-hover:translate-x-1 transition-all duration-300">
+                      {item.label}
+                    </span>
+                  </Link>
+                )
+              )}
+            </nav>
+            <Link href="/campaign-planner" className="btn btn-primary mt-8 self-start">
+              Book your ad
+            </Link>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[var(--muted)]">
+              <a href={`tel:${BRAND.phoneRaw}`} className="hover:text-amber transition-colors">
+                {BRAND.phone}
+              </a>
+              <span className="text-[var(--faint)] hidden sm:inline">·</span>
+              <a href={`mailto:${BRAND.email}`} className="hover:text-amber transition-colors">
+                {BRAND.email}
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </>
-  );
-}
-
-function Logo() {
-  return (
-    <span className="relative grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-[var(--amber-hi)] to-[var(--amber-deep)] shadow-[0_0_20px_-4px_var(--amber-glow)]">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <circle cx="7" cy="18" r="2.4" stroke="#1a1206" strokeWidth="1.8" />
-        <circle cx="17.5" cy="18" r="2.4" stroke="#1a1206" strokeWidth="1.8" />
-        <path d="M3 18V8.5A1.5 1.5 0 0 1 4.5 7H14l3.5 4.5H21v6.5" stroke="#1a1206" strokeWidth="1.8" strokeLinejoin="round" />
-        <path d="M6 11h5v3H6z" fill="#1a1206" opacity="0.55" />
-      </svg>
-    </span>
   );
 }

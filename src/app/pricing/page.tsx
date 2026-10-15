@@ -11,9 +11,8 @@ export const metadata: Metadata = {
 
 const FAQ = [
   { q: "What are the running hours?", a: "Every vehicle runs the prime evening window — 4 PM to 10 PM — when streets and markets are busiest." },
-  { q: "What's the difference between the two systems?", a: "Full-Day Booking is exclusive: one brand owns the whole 4–10 PM window. The Slot System is shared: up to three brands rotate, with each ad changing every 2 minutes." },
+  { q: "What's the difference between the two systems?", a: "Full-Day Booking is exclusive — one brand owns the whole 4–10 PM window. The Slot System is shared — up to three brands run across the same evening for a lower price." },
   { q: "Is the full-day price negotiable?", a: "No — ₹9,000 per day is a flat, non-negotiable rate for complete exclusivity." },
-  { q: "How much screen time does one slot get?", a: "With ads rotating every 2 minutes across three brands, each slot accumulates roughly 2 hours of total screen time over the evening." },
   { q: "Can I change my creative?", a: "Yes. Send us your ad and we load it — swaps are quick and there's no extra charge." },
   { q: "Where do the vehicles run?", a: "Across Panchkula and the Tricity today, with more cities rolling out. Tell us your target area and we'll route for it." },
 ];

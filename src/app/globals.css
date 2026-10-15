@@ -333,6 +333,17 @@ h1, h2, h3, h4 {
   0% { opacity: 0; transform: translateY(0.45em); }
   100% { opacity: 1; transform: translateY(0); }
 }
+@keyframes dash-move { to { transform: translateX(-220px); } }
+
+/* Hero wheels — GPU-cheap; disabled on phones to keep the van smooth */
+.wheel {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wheel-spin 0.9s linear infinite;
+}
+@media (max-width: 640px) {
+  .wheel { animation: none; }
+}
 
 /* Scroll reveal */
 [data-reveal] {

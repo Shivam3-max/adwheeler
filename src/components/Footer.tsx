@@ -62,10 +62,9 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
-            <p className="font-display text-lg font-semibold">
-              {BRAND.name}<span className="text-amber"> 2.0</span>
-            </p>
-            <p className="text-sm text-[var(--muted)] mt-1 max-w-sm">{BRAND.tagline}</p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/adwheeler-logo.png" alt="AdWheeler" width={132} height={70} className="h-14 w-auto" />
+            <p className="text-sm text-[var(--muted)] mt-3 max-w-sm">{BRAND.tagline}</p>
           </div>
           <div className="text-sm text-[var(--muted)] space-y-1 md:text-right">
             <a href={`tel:${BRAND.phoneRaw}`} className="block hover:text-amber transition-colors">{BRAND.phone}</a>

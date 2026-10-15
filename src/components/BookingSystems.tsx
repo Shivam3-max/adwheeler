@@ -92,7 +92,7 @@ function Timeline({ variant }: { variant: string }) {
         ))}
       </div>
       {variant === "slot" && (
-        <p className="mt-2 font-mono text-[0.6rem] text-[var(--muted)]">Brands A · B · C rotate every 2 min →</p>
+        <p className="mt-2 font-mono text-[0.6rem] text-[var(--muted)]">Shared by up to 3 brands across the evening →</p>
       )}
     </div>
   );

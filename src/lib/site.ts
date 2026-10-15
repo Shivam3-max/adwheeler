@@ -30,7 +30,7 @@ export const NAV = [
 export const STATS = [
   { value: 24, suffix: "+", label: "LED vehicles" },
   { value: 6, suffix: " hrs", label: "Live every evening" },
-  { value: 2, suffix: " min", label: "Slot rotation" },
+  { value: 3, suffix: "", label: "Slots per evening" },
   { value: 120, suffix: "+", label: "Brands served" },
   { value: 12, suffix: "+", label: "Cities on roadmap" },
 ];
@@ -65,8 +65,8 @@ export const BOOKING = [
     tagline: "Share the evening, split the cost.",
     points: [
       "3 slots across the 4 PM – 10 PM window",
-      "Ads rotate every 2 minutes",
-      "≈ 2 hours of total screen time per slot",
+      "Prime-time evening visibility",
+      "A budget-friendly way to get on the road",
       "Up to 3 brands share the same day",
     ],
   },
