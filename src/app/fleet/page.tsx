@@ -65,7 +65,7 @@ export default function FleetPage() {
         title="Put your brand on one."
         sub="Pick a full evening or a shared slot, and we'll get your ad on the road."
         primary={{ label: "Book your ad", href: "/campaign-planner" }}
-        secondary={{ label: "See pricing", href: "/pricing" }}
+        secondary={{ label: "Talk to us", href: "/contact" }}
       />
     </>
   );

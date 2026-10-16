@@ -8,14 +8,14 @@ import { BRAND } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL("https://adwheeler.in"),
   title: {
-    default: `${BRAND.name} 2.0 — ${BRAND.tagline}`,
-    template: `%s · ${BRAND.name} 2.0`,
+    default: `${BRAND.name} — ${BRAND.tagline}`,
+    template: `%s · ${BRAND.name}`,
   },
   description:
     "GPS-powered mobile LED advertising that transforms every street into an opportunity. Move your brand through the city.",
-  keywords: ["DOOH", "mobile advertising", "LED vehicles", "outdoor advertising India", "AD Wheeler"],
+  keywords: ["DOOH", "mobile advertising", "LED vehicles", "outdoor advertising India", "AdWheeler"],
   openGraph: {
-    title: `${BRAND.name} 2.0`,
+    title: `${BRAND.name}`,
     description: BRAND.tagline,
     type: "website",
   },

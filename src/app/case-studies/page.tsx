@@ -6,7 +6,7 @@ import { CASE_STUDIES } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Case Studies",
-  description: "Real campaigns, real routes, real results from the AD Wheeler network.",
+  description: "Real campaigns, real routes, real results from the AdWheeler network.",
 };
 
 const GRADS = ["from-[#1358d8] to-[#0ba7a0]", "from-[#f7861a] to-[#c81e5a]", "from-[#0a8f83] to-[#134e8f]"];

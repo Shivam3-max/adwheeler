@@ -58,7 +58,7 @@ export default function Dashboard() {
                   </svg>
                   <div className="absolute left-10 bottom-6 w-20 h-20 rounded-full blur-2xl bg-[rgba(247,134,26,0.28)]" />
                   <div className="absolute right-16 top-8 w-16 h-16 rounded-full blur-2xl bg-[rgba(11,167,160,0.24)]" />
-                  <span className="absolute top-3 left-3 chip !text-[0.6rem]">Live route · AD Wheeler #042</span>
+                  <span className="absolute top-3 left-3 chip !text-[0.6rem]">Live route · AdWheeler #042</span>
                 </div>
 
                 {/* stat stack */}

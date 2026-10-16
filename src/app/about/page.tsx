@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 };
 
 const TIMELINE = [
-  { year: "2023", title: "The idea", desc: "A single LED vehicle looped Panchkula's busy markets. Brands noticed." },
+  { year: "2023", title: "The idea", desc: "A single LED vehicle looped Chandigarh's busy markets. Brands noticed." },
   { year: "2024", title: "First fleet", desc: "A handful of GPS-tracked vehicles running across the Tricity." },
   { year: "2025", title: "The model", desc: "Two simple ways to book — full-day exclusive and shared slots — took off." },
-  { year: "2026", title: "AD Wheeler 2.0", desc: "A growing fleet and a franchise network taking it pan-India." },
+  { year: "2026", title: "AdWheeler today", desc: "A growing fleet and a franchise network taking it pan-India." },
 ];
 
 const VALUES = [
@@ -28,7 +28,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About"
         title={<>We turned the street <span className="text-gradient">into a screen.</span></>}
-        sub="AD Wheeler is building the infrastructure for India's mobile, measurable, out-of-home advertising — one electric vehicle at a time."
+        sub="AdWheeler is building the infrastructure for India's mobile, measurable, out-of-home advertising — one electric vehicle at a time."
       />
 
       {/* Story */}
@@ -48,7 +48,7 @@ export default function AboutPage() {
               <p>
                 What started as one glowing rickshaw is now a GPS-orchestrated network
                 of electric LED vehicles, backed by a platform that proves every rupee
-                of reach. That&apos;s AD Wheeler 2.0.
+                of reach. That&apos;s AdWheeler.
               </p>
             </div>
           </Reveal>

@@ -7,7 +7,7 @@ import { CITIES } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cities",
-  description: "Where AD Wheeler runs today and where it's headed next across India.",
+  description: "Where AdWheeler runs today and where it's headed next across India.",
 };
 
 export default function CitiesPage() {
@@ -64,7 +64,7 @@ export default function CitiesPage() {
         </div>
       </section>
 
-      <CTABand title="Don't see your city?" sub="Franchise partners bring AD Wheeler to new cities first." primary={{ label: "Request your city", href: "/contact" }} secondary={{ label: "Become a partner", href: "/franchise" }} />
+      <CTABand title="Don't see your city?" sub="Franchise partners bring AdWheeler to new cities first." primary={{ label: "Request your city", href: "/contact" }} secondary={{ label: "Become a partner", href: "/franchise" }} />
     </>
   );
 }

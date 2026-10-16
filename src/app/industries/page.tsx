@@ -8,7 +8,7 @@ import { INDUSTRIES } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Industries",
-  description: "The sectors already moving their brands through the city with AD Wheeler.",
+  description: "The sectors already moving their brands through the city with AdWheeler.",
 };
 
 export default function IndustriesPage() {

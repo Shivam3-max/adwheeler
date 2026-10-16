@@ -3,14 +3,13 @@
 // ============================================================================
 
 export const BRAND = {
-  name: "AD Wheeler",
-  version: "2.0",
-  tagline: "Panchkula & Tricity's smart mobile LED advertising — now going pan-India",
+  name: "AdWheeler",
+  tagline: "Chandigarh & Tricity's smart mobile LED advertising — now going pan-India",
   phone: "+91 98889 87161",
   phoneRaw: "919888987161",
   email: "hello@adwheeler.in",
-  base: "Panchkula · Tricity",
-  address: "Panchkula, Haryana — serving Tricity (Chandigarh · Mohali · Panchkula)",
+  base: "Chandigarh · Tricity",
+  address: "Chandigarh — serving the Tricity (Chandigarh · Mohali · Panchkula)",
 };
 
 export const NAV = [
@@ -23,7 +22,6 @@ export const NAV = [
   { label: "Technology", href: "/technology" },
   { label: "Franchise", href: "/franchise" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Pricing", href: "/pricing" },
   { label: "Blog", href: "/blog" },
 ];
 
@@ -84,9 +82,9 @@ export type City = {
 
 // Positioned on the real India map (viewBox 0 0 612 696).
 export const CITIES: City[] = [
-  { name: "Panchkula · Tricity", state: "Haryana / Punjab", status: "live", note: "Head office & first fleet", x: 186, y: 158, hq: true },
-  { name: "Chandigarh", state: "Chandigarh UT", status: "live", note: "Core Tricity coverage", x: 176, y: 164 },
+  { name: "Chandigarh · Tricity", state: "Chandigarh", status: "live", note: "Head office & first fleet", x: 186, y: 158, hq: true },
   { name: "Mohali", state: "Punjab", status: "live", note: "Core Tricity coverage", x: 168, y: 170 },
+  { name: "Panchkula", state: "Haryana", status: "live", note: "Core Tricity coverage", x: 176, y: 164 },
   { name: "Ludhiana", state: "Punjab", status: "live", note: "Now on the road", x: 156, y: 150 },
   { name: "Delhi NCR", state: "Delhi", status: "soon", note: "Launching next", x: 190, y: 212 },
   { name: "Jaipur", state: "Rajasthan", status: "soon", note: "On the roadmap", x: 168, y: 240 },
@@ -237,7 +235,7 @@ export const BLOG = [
   { slug: "dooh-2026", title: "Why DOOH is the fastest-growing ad medium in India", cat: "Industry", read: "6 min", date: "Jul 2026", featured: true },
   { slug: "gps-attribution", title: "GPS attribution: proving outdoor advertising actually works", cat: "Technology", read: "8 min", date: "Jun 2026", featured: false },
   { slug: "dayparting", title: "The art of dayparting a mobile LED campaign", cat: "Playbook", read: "5 min", date: "Jun 2026", featured: false },
-  { slug: "franchise-economics", title: "The unit economics of an AD Wheeler franchise", cat: "Franchise", read: "9 min", date: "May 2026", featured: false },
+  { slug: "franchise-economics", title: "The unit economics of an AdWheeler franchise", cat: "Franchise", read: "9 min", date: "May 2026", featured: false },
   { slug: "led-brightness", title: "Nits, pixel-pitch and why daylight readability matters", cat: "Technology", read: "7 min", date: "May 2026", featured: false },
   { slug: "creative-that-moves", title: "Designing creative for a screen that literally moves", cat: "Playbook", read: "4 min", date: "Apr 2026", featured: false },
 ];

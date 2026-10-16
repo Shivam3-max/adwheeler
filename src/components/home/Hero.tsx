@@ -32,7 +32,7 @@ export default function Hero() {
           <div className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white/70 px-4 py-1.5 shadow-[var(--shadow-sm)] backdrop-blur mb-8">
             <span className="dot" />
             <span className="font-mono text-[0.68rem] tracking-[0.22em] uppercase text-[var(--muted)]">
-              Panchkula · Tricity &nbsp;→&nbsp; Pan-India
+              Chandigarh · Tricity &nbsp;→&nbsp; Pan-India
             </span>
           </div>
 
@@ -62,7 +62,7 @@ export default function Hero() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </Link>
             </Magnetic>
-            <Link href="/pricing" className="btn btn-ghost text-base">See pricing</Link>
+            <Link href="#booking" className="btn btn-ghost text-base">How it works</Link>
           </div>
         </div>
       </div>
@@ -125,33 +125,76 @@ export default function Hero() {
 function Vehicle() {
   return (
     <div className="relative">
-      {/* LED screen with rotating ads */}
       <div className="relative">
-        <svg viewBox="0 0 220 150" className="w-[150px] md:w-[184px] drop-shadow-[0_14px_22px_rgba(16,22,34,0.18)]">
-          {/* body */}
-          <path d="M12 118 L12 74 Q12 66 20 66 L84 66 L104 44 L150 44 Z" fill="#f7a11c" stroke="#d97706" strokeWidth="2" />
-          <path d="M92 66 L108 48 L140 48 L140 66 Z" fill="#0a1a2a" opacity="0.85" />
-          {/* LED box */}
-          <rect x="120" y="28" width="88" height="86" rx="6" fill="#141414" stroke="#000" strokeWidth="2" />
-          <rect x="120" y="20" width="88" height="10" rx="3" fill="#0d0d0d" />
-          {/* wheels */}
-          <g className="wheel">
-            <circle cx="58" cy="122" r="17" fill="#14161b" stroke="#2a2d34" strokeWidth="4" />
-            <line x1="58" y1="108" x2="58" y2="136" stroke="#3a3d45" strokeWidth="2" />
-            <line x1="44" y1="122" x2="72" y2="122" stroke="#3a3d45" strokeWidth="2" />
-          </g>
-          <g className="wheel">
-            <circle cx="176" cy="122" r="17" fill="#14161b" stroke="#2a2d34" strokeWidth="4" />
-            <line x1="176" y1="108" x2="176" y2="136" stroke="#3a3d45" strokeWidth="2" />
-            <line x1="162" y1="122" x2="190" y2="122" stroke="#3a3d45" strokeWidth="2" />
-          </g>
-          {/* headlight */}
-          <circle cx="16" cy="96" r="4" fill="#fff3d6" />
+        {/* Polished side-profile: LED billboard on the rear, cab + headlight up front
+            (right) so the vehicle reads as driving forward, left → right. */}
+        <svg viewBox="0 0 240 152" className="w-[156px] md:w-[192px] drop-shadow-[0_16px_20px_rgba(16,22,34,0.20)]">
+          <defs>
+            <linearGradient id="v-body" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#ffbe50" />
+              <stop offset="1" stopColor="#ef8c12" />
+            </linearGradient>
+            <linearGradient id="v-cab" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="#ffcd6e" />
+              <stop offset="1" stopColor="#f19a1e" />
+            </linearGradient>
+            <linearGradient id="v-glass" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#d6ecff" />
+              <stop offset="1" stopColor="#8ec0e8" />
+            </linearGradient>
+            <radialGradient id="v-head" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" stopColor="#fff6d8" />
+              <stop offset="1" stopColor="#ffd34d" />
+            </radialGradient>
+          </defs>
+
+          {/* ground shadow */}
+          <ellipse cx="120" cy="143" rx="101" ry="6.5" fill="rgba(16,22,34,0.12)" />
+
+          {/* base skirt */}
+          <rect x="22" y="108" width="190" height="12" rx="4" fill="url(#v-body)" />
+
+          {/* LED billboard housing (rear / left) */}
+          <rect x="16" y="20" width="110" height="95" rx="11" fill="#17181d" />
+          <rect x="22" y="13" width="98" height="9" rx="4" fill="#0e0f12" />
+          {/* screen well (covered by the HTML ad overlay) */}
+          <rect x="25" y="30" width="92" height="74" rx="6" fill="#0a0c12" />
+          <rect x="25" y="30" width="92" height="74" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" />
+
+          {/* cab (front / right) */}
+          <path d="M123 110 L123 66 Q123 57 132 55 L151 51 L187 51 Q199 51 203 66 L209 110 Z" fill="url(#v-cab)" stroke="#cf6f08" strokeWidth="1.5" strokeLinejoin="round" />
+          {/* roof highlight */}
+          <path d="M136 56 L185 53 Q195 53 198 63 L136 63 Z" fill="rgba(255,255,255,0.22)" />
+          {/* windshield */}
+          <path d="M153 60 L184 60 Q191 60 194 69 L198 87 L153 87 Z" fill="url(#v-glass)" />
+          <path d="M153 60 L160 60 L156 87 L153 87 Z" fill="rgba(255,255,255,0.28)" />
+          {/* door seam */}
+          <line x1="153" y1="61" x2="153" y2="108" stroke="#cf6f08" strokeWidth="1.5" />
+          {/* door handle */}
+          <rect x="162" y="95" width="12" height="3" rx="1.5" fill="#cf6f08" />
+          {/* bumper + headlight */}
+          <rect x="203" y="102" width="9" height="10" rx="3" fill="#2a2d34" />
+          <ellipse cx="206" cy="94" rx="4.5" ry="6.5" fill="url(#v-head)" />
+
+          {/* wheels (spokes spin via .wheel) */}
+          {[66, 172].map((cx) => (
+            <g className="wheel" key={cx}>
+              <circle cx={cx} cy={122} r="16" fill="#15171c" />
+              <circle cx={cx} cy={122} r="9" fill="#3b404a" />
+              <g stroke="#5a606b" strokeWidth="2">
+                <line x1={cx} y1={109} x2={cx} y2={135} />
+                <line x1={cx - 13} y1={122} x2={cx + 13} y2={122} />
+                <line x1={cx - 9} y1={113} x2={cx + 9} y2={131} />
+                <line x1={cx + 9} y1={113} x2={cx - 9} y2={131} />
+              </g>
+              <circle cx={cx} cy={122} r="3" fill="#1c1f25" />
+            </g>
+          ))}
         </svg>
 
-        {/* ad banners overlaid on the LED box */}
-        <div className="absolute" style={{ left: "54.5%", top: "18.5%", width: "36%", height: "52%" }}>
-          <div className="relative w-full h-full rounded-[3px] overflow-hidden">
+        {/* ad banners overlaid on the LED screen well (x25 y30 w92 h74 of 240×152) */}
+        <div className="absolute" style={{ left: "10.4%", top: "19.7%", width: "38.3%", height: "48.7%" }}>
+          <div className="relative w-full h-full rounded-[5px] overflow-hidden">
             {ADS.map((ad, i) => (
               <div
                 key={i}

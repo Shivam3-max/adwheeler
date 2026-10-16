@@ -98,7 +98,7 @@ export default function IndiaMap() {
               Rooted in Tricity. <span className="text-gradient">Rolling out nationwide.</span>
             </h3>
             <p className="text-[var(--ink-dim)] max-w-md">
-              Our fleet runs today across Panchkula, Chandigarh, Mohali and Ludhiana —
+              Our fleet runs today across Chandigarh, Mohali, Panchkula and Ludhiana —
               and the network is expanding city by city across India. Hover a marker to
               see what&apos;s live and what&apos;s next.
             </p>

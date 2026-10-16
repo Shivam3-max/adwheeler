@@ -6,7 +6,7 @@ import FranchiseForm from "@/components/FranchiseForm";
 
 export const metadata: Metadata = {
   title: "Franchise",
-  description: "Bring AD Wheeler to your city — turnkey electric LED fleet, a proven booking model and full support.",
+  description: "Bring AdWheeler to your city — turnkey electric LED fleet, a proven booking model and full support.",
 };
 
 const HIGHLIGHTS = [
@@ -21,7 +21,7 @@ const SUPPORT = [
   { t: "Live tracking", d: "The GPS platform to run, monitor and prove every campaign." },
   { t: "Sales playbook", d: "Pricing, pitch and proven ad-sales training from day one." },
   { t: "Central ops", d: "Creative handling, maintenance guidance and ongoing support." },
-  { t: "Brand power", d: "The AD Wheeler name, marketing assets and shared leads." },
+  { t: "Brand power", d: "The AdWheeler name, marketing assets and shared leads." },
   { t: "Simple model", d: "Just two products to sell — full-day and slots. Easy to run." },
 ];
 
@@ -29,7 +29,7 @@ const FAQ = [
   { q: "Do I need advertising experience?", a: "No. Our training and playbook cover sales, operations and creative from day one." },
   { q: "How does the money work?", a: "You sell the two simple products — full-day bookings at ₹9,000 and slots at ₹5,000 — across your city's evening runs." },
   { q: "Who handles the technology?", a: "We do. You get the tracking platform fully managed; you focus on local sales and running the fleet." },
-  { q: "How are territories allocated?", a: "Exclusive city zones, first come, first served — Panchkula & Tricity are already ours, the rest of India is open." },
+  { q: "How are territories allocated?", a: "Exclusive city zones, first come, first served — Chandigarh & Tricity are already ours, the rest of India is open." },
 ];
 
 export default function FranchisePage() {
@@ -37,8 +37,8 @@ export default function FranchisePage() {
     <>
       <PageHero
         eyebrow="Franchise"
-        title={<>Bring AD Wheeler <span className="text-gradient">to your city.</span></>}
-        sub="We've proven the model in Panchkula and the Tricity. Now we're handing the keys to partners across India — turnkey fleet, simple pricing, full support."
+        title={<>Bring AdWheeler <span className="text-gradient">to your city.</span></>}
+        sub="We've proven the model in Chandigarh and the Tricity. Now we're handing the keys to partners across India — turnkey fleet, simple pricing, full support."
       >
         <div className="mt-8 flex flex-wrap gap-3">
           <a href="#apply" className="btn btn-primary">Apply now</a>

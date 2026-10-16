@@ -48,7 +48,7 @@ export default function Compare() {
             onMouseLeave={() => (dragging.current = false)}
             onTouchMove={(e) => setFromClientX(e.touches[0].clientX)}
           >
-            {/* Right (AD Wheeler) — base layer */}
+            {/* Right (AdWheeler) — base layer */}
             <Panel variant="wheeler" />
             {/* Left (Traditional) — clipped overlay */}
             <div
@@ -83,7 +83,7 @@ export default function Compare() {
           <div className="grid grid-cols-3 bg-[var(--bg-2)] text-xs font-mono uppercase tracking-wider text-[var(--faint)]">
             <span className="p-4">Metric</span>
             <span className="p-4">Traditional</span>
-            <span className="p-4 text-amber">AD Wheeler</span>
+            <span className="p-4 text-amber">AdWheeler</span>
           </div>
           {ROWS.map((r) => (
             <div key={r.k} className="grid grid-cols-3 bg-[var(--bg)] text-sm">
@@ -121,7 +121,7 @@ function Panel({ variant }: { variant: "static" | "wheeler" }) {
   return (
     <div className="absolute inset-0 flex flex-col bg-[radial-gradient(120%_100%_at_80%_0%,rgba(247,134,26,0.16),transparent_55%),radial-gradient(100%_100%_at_10%_100%,rgba(11,167,160,0.14),transparent_55%),#ffffff]">
       <div className="p-6 flex items-center justify-between">
-        <span className="chip !border-[var(--amber)]/40 !text-amber">AD Wheeler · Live</span>
+        <span className="chip !border-[var(--amber)]/40 !text-amber">AdWheeler · Live</span>
         <span className="flex items-center gap-2 text-xs text-[var(--cyan)]">
           <span className="dot" /> Broadcasting
         </span>

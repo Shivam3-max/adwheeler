@@ -7,7 +7,7 @@ import { NAV, BRAND } from "@/lib/site";
 import Magnetic from "./Magnetic";
 import { cn } from "@/lib/utils";
 
-const PRIMARY = ["/pricing", "/solutions", "/cities", "/franchise", "/about"];
+const PRIMARY = ["/fleet", "/solutions", "/cities", "/franchise", "/about"];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);

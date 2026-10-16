@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 };
 
 const OFFICES = [
-  { city: "Panchkula", role: "Head office", addr: "Panchkula, Haryana — Tricity" },
-  { city: "Chandigarh · Mohali", role: "Tricity fleet", addr: "Full coverage across the Tricity" },
+  { city: "Chandigarh", role: "Head office", addr: "Chandigarh — Tricity" },
+  { city: "Mohali · Panchkula", role: "Tricity fleet", addr: "Full coverage across the Tricity" },
   { city: "Pan-India", role: "Expanding", addr: "New cities rolling out — talk to us" },
 ];
 
 export default function ContactPage() {
-  const wa = `https://wa.me/${BRAND.phoneRaw}?text=${encodeURIComponent("Hi AD Wheeler, I'd like to know more.")}`;
+  const wa = `https://wa.me/${BRAND.phoneRaw}?text=${encodeURIComponent("Hi AdWheeler, I'd like to know more.")}`;
   return (
     <>
       <PageHero
@@ -57,7 +57,7 @@ export default function ContactPage() {
                     <animate attributeName="opacity" values="0.8;0;0.8" dur="3s" repeatCount="indefinite" />
                   </circle>
                 </svg>
-                <span className="absolute bottom-4 left-4 chip">Head office · Panchkula</span>
+                <span className="absolute bottom-4 left-4 chip">Head office · Chandigarh</span>
               </div>
             </Reveal>
           </div>

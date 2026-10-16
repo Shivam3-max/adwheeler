@@ -57,7 +57,7 @@ function AdScreen({ w = 2.1, h = 1.35, z = 0, rotY = 0 }: { w?: number; h?: numb
   );
 }
 
-/* ---- The AD Wheeler vehicle (stylised from primitives) -------------------- */
+/* ---- The AdWheeler vehicle (stylised from primitives) -------------------- */
 function Vehicle() {
   const group = useRef<THREE.Group>(null);
   useFrame((state) => {
