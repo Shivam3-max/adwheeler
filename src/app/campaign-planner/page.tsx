@@ -1,14 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { CITIES, BOOKING } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-const STEPS = ["Booking type", "City", "Duration", "Your estimate"];
-
-function inr(n: number) {
-  return `₹${new Intl.NumberFormat("en-IN").format(Math.round(n))}`;
-}
+const STEPS = ["Booking type", "City", "Duration", "Review"];
 
 export default function CampaignPlanner() {
   const [step, setStep] = useState(0);
@@ -17,12 +13,6 @@ export default function CampaignPlanner() {
   const [days, setDays] = useState(3);
   const [slotsPerDay, setSlotsPerDay] = useState(1);
   const [sent, setSent] = useState(false);
-
-  const estimate = useMemo(() => {
-    if (type === "full-day") return 9000 * days;
-    if (type === "slot") return 5000 * slotsPerDay * days;
-    return 0;
-  }, [type, days, slotsPerDay]);
 
   const canNext =
     (step === 0 && type) || (step === 1 && city) || step === 2 || step === 3;
@@ -69,7 +59,7 @@ export default function CampaignPlanner() {
                       </div>
                       <p className="font-display text-2xl">{b.name}</p>
                       <p className="text-sm text-[var(--muted)] mt-1 mb-4">{b.tagline}</p>
-                      <p className="font-display text-3xl text-amber">{b.price}<span className="text-sm text-[var(--muted)] font-body"> {b.unit}</span></p>
+                      <p className="font-display text-3xl text-amber">{b.stat.big}<span className="text-sm text-[var(--muted)] font-body"> {b.stat.label}</span></p>
                     </button>
                   ))}
                 </div>
@@ -120,19 +110,12 @@ export default function CampaignPlanner() {
                     </div>
                   </div>
                 )}
-                <div className="mt-8 rounded-2xl border border-[var(--line)] bg-[var(--bg-2)] p-5 flex items-center justify-between">
-                  <span className="text-sm text-[var(--muted)]">Running estimate</span>
-                  <span className="font-display text-2xl text-amber">{inr(estimate)}</span>
-                </div>
               </Step>
             )}
 
             {step === 3 && !sent && (
-              <Step title="Your estimate">
-                <div className="rounded-2xl border border-[var(--amber)]/40 bg-[rgba(247,134,26,0.05)] p-6 mb-6 text-center">
-                  <p className="font-mono text-[0.65rem] uppercase tracking-wider text-[var(--faint)] mb-1">Total (indicative)</p>
-                  <p className="font-display text-5xl text-amber">{inr(estimate)}</p>
-                </div>
+              <Step title="Review your request">
+                <p className="text-[var(--muted)] mb-6">Here&apos;s your request. Share your details and our team will call you with a tailored quote.</p>
                 <div className="rounded-2xl border border-[var(--line)] bg-[var(--bg-2)] p-5 mb-6 text-sm text-[var(--muted)] space-y-1">
                   <p><span className="text-[var(--faint)]">Type:</span> {BOOKING.find((b) => b.id === type)?.name} &nbsp;·&nbsp; <span className="text-[var(--faint)]">City:</span> {city}</p>
                   <p>

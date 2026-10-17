@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const HIGHLIGHTS = [
   { k: "Exclusive", l: "City territory", d: "A protected zone and first-mover advantage in your market." },
   { k: "Turnkey", l: "Fleet & setup", d: "Vehicles, screens and tracking — delivered road-ready." },
-  { k: "₹9K / ₹5K", l: "Proven pricing", d: "The simple full-day and slot model, ready to sell." },
+  { k: "2", l: "Simple products", d: "Just full-day and slot bookings to sell — easy to run." },
   { k: "Full", l: "Training & support", d: "Sales playbook, creative help and central operations." },
 ];
 
@@ -27,7 +27,7 @@ const SUPPORT = [
 
 const FAQ = [
   { q: "Do I need advertising experience?", a: "No. Our training and playbook cover sales, operations and creative from day one." },
-  { q: "How does the money work?", a: "You sell the two simple products — full-day bookings at ₹9,000 and slots at ₹5,000 — across your city's evening runs." },
+  { q: "How does the money work?", a: "You sell two simple products — full-day exclusive bookings and shared slots — across your city's evening runs, at rates we set with you." },
   { q: "Who handles the technology?", a: "We do. You get the tracking platform fully managed; you focus on local sales and running the fleet." },
   { q: "How are territories allocated?", a: "Exclusive city zones, first come, first served — Chandigarh & Tricity are already ours, the rest of India is open." },
 ];

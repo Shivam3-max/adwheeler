@@ -35,11 +35,10 @@ export default function BookingSystems({ heading = true }: { heading?: boolean }
                   <h3 className="display text-3xl mb-1">{b.name}</h3>
                   <p className="text-[var(--muted)] mb-6">{b.tagline}</p>
 
-                  <div className="flex items-end gap-2 mb-1">
-                    <span className="font-display text-5xl md:text-6xl leading-none">{b.price}</span>
-                    <span className="text-[var(--muted)] mb-1.5">{b.unit}</span>
+                  <div className="flex items-baseline gap-3 mb-7">
+                    <span className="font-display text-5xl md:text-6xl leading-none text-amber">{b.stat.big}</span>
+                    <span className="text-sm text-[var(--muted)] max-w-[12rem]">{b.stat.label}</span>
                   </div>
-                  <p className="font-mono text-[0.68rem] uppercase tracking-wider text-[var(--faint)] mb-7">{b.note}</p>
 
                   {/* evening timeline visual */}
                   <Timeline variant={b.id} />

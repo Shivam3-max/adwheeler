@@ -73,30 +73,51 @@ export default function FleetPage() {
 
 function VehicleLarge() {
   return (
-    <svg viewBox="0 0 340 210" className="w-[80%] max-w-[520px] drop-shadow-[0_24px_50px_rgba(16,22,34,0.18)]">
+    <svg viewBox="0 0 240 152" className="w-[82%] max-w-[560px] drop-shadow-[0_26px_46px_rgba(16,22,34,0.20)]">
       <defs>
-        <linearGradient id="fleet-ad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#1358d8" />
-          <stop offset="100%" stopColor="#0ba7a0" />
-        </linearGradient>
+        <linearGradient id="fl-body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#ffbe50" /><stop offset="1" stopColor="#ef8c12" /></linearGradient>
+        <linearGradient id="fl-cab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#ffcd6e" /><stop offset="1" stopColor="#f19a1e" /></linearGradient>
+        <linearGradient id="fl-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#d6ecff" /><stop offset="1" stopColor="#8ec0e8" /></linearGradient>
+        <linearGradient id="fl-ad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#1358d8" /><stop offset="1" stopColor="#0ba7a0" /></linearGradient>
+        <radialGradient id="fl-head" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stopColor="#fff6d8" /><stop offset="1" stopColor="#ffd34d" /></radialGradient>
       </defs>
-      {/* body */}
-      <path d="M20 168 L20 104 Q20 96 28 96 L120 96 L146 66 L214 66 Z" fill="#f7a11c" stroke="#c25c00" strokeWidth="2" />
-      <path d="M126 96 L150 70 L190 70 L190 96 Z" fill="#0a1a2a" opacity="0.85" />
-      {/* LED box */}
-      <rect x="150" y="34" width="150" height="104" rx="8" fill="#141414" stroke="#000" strokeWidth="2" />
-      <rect x="150" y="24" width="150" height="12" rx="3" fill="#0d0d0d" />
-      {/* screen */}
-      <rect x="160" y="44" width="130" height="84" rx="4" fill="url(#fleet-ad)" />
-      <text x="225" y="82" textAnchor="middle" fontFamily="'Clash Display',sans-serif" fontWeight="700" fontSize="20" fill="#fff">YOUR AD</text>
-      <text x="225" y="106" textAnchor="middle" fontFamily="'Clash Display',sans-serif" fontWeight="700" fontSize="16" fill="#ffffff" opacity="0.9">HERE</text>
+
+      {/* ground shadow */}
+      <ellipse cx="120" cy="143" rx="101" ry="6.5" fill="rgba(16,22,34,0.12)" />
+      {/* base skirt */}
+      <rect x="22" y="108" width="190" height="12" rx="4" fill="url(#fl-body)" />
+
+      {/* LED billboard housing (rear / left) + screen */}
+      <rect x="16" y="20" width="110" height="95" rx="11" fill="#17181d" />
+      <rect x="22" y="13" width="98" height="9" rx="4" fill="#0e0f12" />
+      <rect x="25" y="30" width="92" height="74" rx="6" fill="url(#fl-ad)" />
+      <text x="71" y="62" textAnchor="middle" fontFamily="'Clash Display',sans-serif" fontWeight="700" fontSize="13" fill="#fff">YOUR AD</text>
+      <text x="71" y="80" textAnchor="middle" fontFamily="'Clash Display',sans-serif" fontWeight="700" fontSize="12" fill="#fff" opacity="0.9">HERE</text>
+
+      {/* cab (front / right) */}
+      <path d="M123 110 L123 66 Q123 57 132 55 L151 51 L187 51 Q199 51 203 66 L209 110 Z" fill="url(#fl-cab)" stroke="#cf6f08" strokeWidth="1.5" strokeLinejoin="round" />
+      <path d="M136 56 L185 53 Q195 53 198 63 L136 63 Z" fill="rgba(255,255,255,0.22)" />
+      <path d="M153 60 L184 60 Q191 60 194 69 L198 87 L153 87 Z" fill="url(#fl-glass)" />
+      <path d="M153 60 L160 60 L156 87 L153 87 Z" fill="rgba(255,255,255,0.28)" />
+      <line x1="153" y1="61" x2="153" y2="108" stroke="#cf6f08" strokeWidth="1.5" />
+      <rect x="162" y="95" width="12" height="3" rx="1.5" fill="#cf6f08" />
+      <rect x="203" y="102" width="9" height="10" rx="3" fill="#2a2d34" />
+      <ellipse cx="206" cy="94" rx="4.5" ry="6.5" fill="url(#fl-head)" />
+
       {/* wheels */}
-      <circle cx="70" cy="172" r="22" fill="#14161b" stroke="#2a2d34" strokeWidth="5" />
-      <circle cx="70" cy="172" r="7" fill="#3a3d45" />
-      <circle cx="250" cy="172" r="22" fill="#14161b" stroke="#2a2d34" strokeWidth="5" />
-      <circle cx="250" cy="172" r="7" fill="#3a3d45" />
-      {/* headlight */}
-      <circle cx="24" cy="128" r="5" fill="#fff3d6" />
+      {[66, 172].map((cx) => (
+        <g key={cx}>
+          <circle cx={cx} cy={122} r="16" fill="#15171c" />
+          <circle cx={cx} cy={122} r="9" fill="#3b404a" />
+          <g stroke="#5a606b" strokeWidth="2">
+            <line x1={cx} y1={109} x2={cx} y2={135} />
+            <line x1={cx - 13} y1={122} x2={cx + 13} y2={122} />
+            <line x1={cx - 9} y1={113} x2={cx + 9} y2={131} />
+            <line x1={cx + 9} y1={113} x2={cx - 9} y2={131} />
+          </g>
+          <circle cx={cx} cy={122} r="3" fill="#1c1f25" />
+        </g>
+      ))}
     </svg>
   );
 }

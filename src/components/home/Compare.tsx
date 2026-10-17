@@ -128,11 +128,39 @@ function Panel({ variant }: { variant: "static" | "wheeler" }) {
       </div>
       <div className="flex-1 grid place-items-center">
         <div className="text-center">
-          <div className="mx-auto w-44 h-28 md:w-72 md:h-44 rounded-lg overflow-hidden border border-[var(--amber)]/40 shadow-[0_20px_50px_-16px_var(--amber-glow)] relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#1358d8] via-[#c81e5a] to-[#f7861a] animate-[flicker_5s_infinite]" />
-            <div className="absolute inset-0 grid place-items-center">
-              <span className="font-display text-2xl md:text-3xl font-bold text-white drop-shadow">YOUR AD HERE</span>
+          <div className="relative" style={{ perspective: "900px" }}>
+            <div
+              className="relative mx-auto w-48 h-28 md:w-80 md:h-48 rounded-xl overflow-hidden border-[4px] border-[#0f1012] bg-black shadow-[0_28px_60px_-18px_rgba(16,22,34,0.55)]"
+              style={{ transform: "rotateY(-16deg) rotateX(4deg)" }}
+            >
+              <video
+                src="/showreel.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              {/* LED pixel grid */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  backgroundImage: "radial-gradient(rgba(0,0,0,0.55) 38%, transparent 42%)",
+                  backgroundSize: "4px 4px",
+                  mixBlendMode: "overlay",
+                  opacity: 0.35,
+                }}
+              />
+              {/* glossy screen shine */}
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/25 via-transparent to-transparent" />
+              <span className="absolute top-2 left-2 font-mono text-[0.55rem] tracking-widest text-white/90 bg-black/40 rounded px-1.5 py-0.5">● LIVE</span>
             </div>
+            {/* soft reflection under the screen */}
+            <div
+              className="mx-auto mt-1 w-40 h-6 md:w-72 md:h-8 rounded-[50%] blur-md bg-[rgba(16,22,34,0.18)]"
+              style={{ transform: "rotateX(60deg)" }}
+            />
           </div>
           <p className="mt-5 font-mono text-xs uppercase tracking-widest text-amber">
             Mobile · Dynamic · GPS-tracked
