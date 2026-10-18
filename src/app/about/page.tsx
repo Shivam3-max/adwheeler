@@ -55,8 +55,8 @@ export default function AboutPage() {
 
           <Reveal delay={120} className="grid grid-cols-2 gap-4">
             {[
-              { n: 24, s: "+", l: "LED vehicles" },
-              { n: 4, s: "", l: "Cities live" },
+              { n: 2, s: "", l: "Vehicles live now" },
+              { n: 23, s: "", l: "In production" },
               { n: 120, s: "+", l: "Brands served" },
               { n: 6, s: " hrs", l: "Live nightly" },
             ].map((k) => (

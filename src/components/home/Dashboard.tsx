@@ -64,7 +64,7 @@ export default function Dashboard() {
                 {/* stat stack */}
                 <div className="flex flex-col gap-3">
                   <MiniStat label="Impressions" value="3.4L" trend="+12%" />
-                  <MiniStat label="Vehicles live" value="6" trend="on route" />
+                  <MiniStat label="Vehicles live" value="2" trend="on route" />
                   <MiniStat label="Dwell avg" value="41s" trend="+4s" />
                 </div>
               </div>

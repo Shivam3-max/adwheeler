@@ -26,9 +26,9 @@ export const NAV = [
 ];
 
 export const STATS = [
-  { value: 24, suffix: "+", label: "LED vehicles" },
+  { value: 2, suffix: "", label: "Vehicles live now" },
+  { value: 23, suffix: "", label: "In production" },
   { value: 6, suffix: " hrs", label: "Live every evening" },
-  { value: 3, suffix: "", label: "Slots per evening" },
   { value: 120, suffix: "+", label: "Brands served" },
   { value: 12, suffix: "+", label: "Cities on roadmap" },
 ];
