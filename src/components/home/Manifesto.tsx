@@ -14,74 +14,82 @@ export default function Manifesto() {
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const timers: ReturnType<typeof setTimeout>[] = [];
+
+    let played = false;
+    const play = () => {
+      if (played) return;
+      played = true;
+      if (reduce) { setBeat(3); setSkipCount(0); return; }
+      timers.push(setTimeout(() => setBeat(1), 120));
+      timers.push(setTimeout(() => setBeat(2), 900));
+      [1, 2, 3].forEach((n) => timers.push(setTimeout(() => setSkipCount(3 - n), 1050 + n * 280)));
+      timers.push(setTimeout(() => setBeat(3), 2000));
+    };
+
     const io = new IntersectionObserver(
       (entries) => {
-        if (!entries[0].isIntersecting) return;
-        io.disconnect();
-        if (reduce) { setBeat(3); setSkipCount(0); return; }
-        timers.push(setTimeout(() => setBeat(1), 200));
-        timers.push(setTimeout(() => setBeat(2), 1500));
-        // fake skip countdown 3→0
-        [1, 2, 3].forEach((n) => timers.push(setTimeout(() => setSkipCount(3 - n), 1700 + n * 450)));
-        timers.push(setTimeout(() => setBeat(3), 3400));
+        if (entries[0].isIntersecting) { play(); io.disconnect(); }
       },
-      { threshold: 0.35 }
+      { threshold: 0.12, rootMargin: "0px 0px -12% 0px" }
     );
-    io.observe(el);
+    // if the section is already in view on mount (e.g. scrolled straight to it), play now
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.85) play();
+    else io.observe(el);
     return () => { io.disconnect(); timers.forEach(clearTimeout); };
   }, []);
 
   return (
-    <section className="section relative overflow-hidden">
+    <section className="relative overflow-hidden flex items-center min-h-[88svh] py-20">
       <div className="pointer-events-none absolute inset-0 grid-lines opacity-30" />
-      <div ref={ref} className="wrap relative max-w-4xl mx-auto text-center">
-        <p className="eyebrow justify-center mb-10">Why a moving billboard</p>
+      <div ref={ref} className="wrap relative w-full max-w-4xl mx-auto text-center">
+        <p className="eyebrow justify-center mb-8 md:mb-10">Why a moving billboard</p>
 
-        {/* Beat 1 — hoardings ignored */}
+        {/* Problem lines */}
         <Line active={beat >= 1} dim={beat >= 3}>
           Hoardings?{" "}
           <span className={cn("strike text-[var(--muted)]", beat >= 1 && "go")}>Ignored.</span>
         </Line>
 
-        {/* Beat 2 — ads skipped */}
         <Line active={beat >= 2} dim={beat >= 3}>
-          <span className="inline-flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
-            Online ads?
+          <span className="inline-flex flex-wrap items-center justify-center gap-x-2.5 gap-y-2">
+            <span>Online ads?</span>
             <span className={cn("strike text-[var(--muted)]", beat >= 2 && skipCount === 0 && "go")}>Skipped.</span>
             <span
               className={cn(
-                "inline-flex items-center gap-2 rounded-md border border-[var(--line-strong)] bg-[var(--bg-2)] px-3 py-1 text-base md:text-lg font-body transition-all duration-300",
+                "inline-flex items-center gap-1.5 rounded-md border border-[var(--line-strong)] bg-[var(--bg-2)] px-2.5 py-1 text-sm md:text-base font-body transition-all duration-300",
                 beat >= 2 ? "opacity-100" : "opacity-0",
                 skipCount === 0 && "border-[var(--amber)]/50 text-amber"
               )}
             >
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M4 5l10 7-10 7V5zm11 0h3v14h-3z" /></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M4 5l10 7-10 7V5zm11 0h3v14h-3z" /></svg>
               {skipCount > 0 ? `Skip in ${skipCount}` : "Skipped"}
             </span>
           </span>
         </Line>
 
-        {/* Beat 3 — punchline */}
-        <div
-          className={cn(
-            "transition-all duration-700",
-            beat >= 3 ? "opacity-100 translate-y-0 mt-4" : "opacity-0 translate-y-6 mt-4 pointer-events-none h-0 overflow-hidden"
-          )}
-        >
-          <h2 className="display text-[clamp(2.2rem,6.5vw,5rem)]">
-            A moving LED billboard?
-            <br />
-            <span className="text-gradient">Impossible to ignore.</span>
-          </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-[var(--ink-dim)]">
-            It doesn&apos;t wait on a wall. It drives into the crowd, lights up, and
-            follows the traffic — no skip button, no scroll-past.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <Link href="/campaign-planner" className="btn btn-primary text-base">
-              Make yours unignorable
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            </Link>
+        {/* Punchline — space reserved so it never reflows the page */}
+        <div className="relative mt-6 md:mt-9 min-h-[220px] sm:min-h-[240px] md:min-h-[320px]">
+          <div
+            className={cn(
+              "absolute inset-x-0 top-0 transition-all duration-700",
+              beat >= 3 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5 pointer-events-none"
+            )}
+          >
+            <h2 className="display text-[clamp(1.9rem,6.2vw,4.6rem)] leading-[1.02]">
+              A moving LED billboard?
+              <br />
+              <span className="text-gradient">Impossible to ignore.</span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-xl text-base md:text-lg text-[var(--ink-dim)]">
+              It doesn&apos;t wait on a wall. It drives into the crowd, lights up, and
+              follows the traffic — no skip button, no scroll-past.
+            </p>
+            <div className="mt-7 flex justify-center">
+              <Link href="/campaign-planner" className="btn btn-primary">
+                Make yours unignorable
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -93,9 +101,9 @@ function Line({ active, dim, children }: { active: boolean; dim: boolean; childr
   return (
     <h2
       className={cn(
-        "display text-[clamp(1.8rem,5.5vw,4rem)] leading-[1.1] mb-5 transition-all duration-700",
-        active ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5",
-        dim && "opacity-35 scale-[0.97]"
+        "display text-[clamp(1.5rem,5.4vw,3.4rem)] leading-[1.12] mb-3 md:mb-4 transition-all duration-700",
+        active ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
+        dim && "!opacity-40 scale-[0.97]"
       )}
     >
       {children}
