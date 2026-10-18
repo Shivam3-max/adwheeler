@@ -345,6 +345,100 @@ h1, h2, h3, h4 {
   .wheel { animation: none; }
 }
 
+/* ==========================================================================
+   FX LAYER — "next level" motion & visual effects
+   ========================================================================== */
+
+/* LED screen: emissive sheen that sweeps across, plus faint pixel grid */
+.led-screen { position: relative; overflow: hidden; }
+.led-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.5) 38%, transparent 42%);
+  background-size: 4px 4px;
+  mix-blend-mode: overlay;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 2;
+}
+.led-screen::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -60%;
+  width: 45%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-18deg);
+  animation: led-sweep 4.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+@keyframes led-sweep {
+  0%, 62% { left: -60%; }
+  86%, 100% { left: 130%; }
+}
+
+/* Split-text word reveal */
+@keyframes word-up {
+  from { opacity: 0; transform: translateY(0.55em) rotate(2deg); }
+  to { opacity: 1; transform: translateY(0) rotate(0); }
+}
+.word-anim { display: inline-block; opacity: 0; will-change: transform; }
+.word-anim.go { animation: word-up 0.7s var(--ease) forwards; }
+
+/* Strike-through draw (manifesto "ignored") */
+@keyframes strike-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.strike {
+  position: relative;
+  white-space: nowrap;
+}
+.strike::after {
+  content: "";
+  position: absolute;
+  left: -2%; right: -2%;
+  top: 52%;
+  height: 0.08em;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.strike.go::after { animation: strike-draw 0.5s var(--ease) 0.3s forwards; }
+
+/* Attention pop toast */
+@keyframes pop-in {
+  0% { opacity: 0; transform: translateY(14px) scale(0.92); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes pop-out {
+  0% { opacity: 1; transform: translateX(0) rotate(0); }
+  100% { opacity: 0; transform: translateX(120%) rotate(6deg); }
+}
+.pop-enter { animation: pop-in 0.5s var(--ease) forwards; }
+.pop-leave { animation: pop-out 0.6s var(--ease) forwards; }
+
+/* Boot loader pixels */
+@keyframes boot-fade { to { opacity: 0; visibility: hidden; } }
+@keyframes boot-flicker { 0%,100%{opacity:1} 20%{opacity:0.3} 24%{opacity:1} 60%{opacity:0.5} 64%{opacity:1} }
+
+/* Tilt helper */
+.tilt { transform-style: preserve-3d; transition: transform 0.3s var(--ease); will-change: transform; }
+
+/* Night section palette (dark band inside the white site) */
+.night {
+  background:
+    radial-gradient(60% 60% at 50% 20%, rgba(247,134,26,0.10), transparent 60%),
+    radial-gradient(50% 50% at 80% 90%, rgba(11,167,160,0.12), transparent 60%),
+    #07080c;
+  color: #f4f2ec;
+}
+.night .text-dimN { color: #b4b3ad; }
+
+@media (prefers-reduced-motion: reduce) {
+  .led-screen::after, .word-anim.go, .strike.go::after,
+  .pop-enter, .pop-leave { animation: none !important; }
+  .word-anim { opacity: 1 !important; }
+}
+
 /* Scroll reveal */
 [data-reveal] {
   opacity: 0;

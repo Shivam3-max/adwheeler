@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import TiltCard from "@/components/fx/TiltCard";
 import { BOOKING } from "@/lib/site";
 
 export default function BookingSystems({ heading = true }: { heading?: boolean }) {
@@ -21,7 +22,8 @@ export default function BookingSystems({ heading = true }: { heading?: boolean }
 
         <div className="grid md:grid-cols-2 gap-5">
           {BOOKING.map((b, i) => (
-            <Reveal key={b.id} delay={i * 90}>
+            <Reveal key={b.id} delay={i * 90} className="h-full">
+              <TiltCard max={5} className="h-full">
               <div className={`relative h-full rounded-[26px] border p-8 md:p-9 overflow-hidden ${b.id === "full-day" ? "border-[var(--amber)]/45 bg-[rgba(247,134,26,0.04)]" : "border-[var(--line)] bg-white"} shadow-[var(--shadow-sm)]`}>
                 {b.id === "full-day" && (
                   <div className="pointer-events-none absolute -top-16 -right-10 w-48 h-48 rounded-full blur-[80px] bg-[rgba(247,134,26,0.20)]" />
@@ -57,6 +59,7 @@ export default function BookingSystems({ heading = true }: { heading?: boolean }
                   </Link>
                 </div>
               </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>

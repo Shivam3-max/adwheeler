@@ -194,7 +194,7 @@ function Vehicle() {
 
         {/* ad banners overlaid on the LED screen well (x25 y30 w92 h74 of 240×152) */}
         <div className="absolute" style={{ left: "10.4%", top: "19.7%", width: "38.3%", height: "48.7%" }}>
-          <div className="relative w-full h-full rounded-[5px] overflow-hidden">
+          <div className="led-screen relative w-full h-full rounded-[5px] overflow-hidden">
             {ADS.map((ad, i) => (
               <div
                 key={i}

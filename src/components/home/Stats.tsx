@@ -1,17 +1,19 @@
 import { STATS } from "@/lib/site";
 import Counter from "@/components/Counter";
 import Reveal from "@/components/Reveal";
+import TextReveal from "@/components/fx/TextReveal";
 
 export default function Stats() {
   return (
     <section className="section">
       <div className="wrap">
-        <Reveal className="max-w-2xl mb-14">
+        <div className="max-w-2xl mb-14">
           <p className="eyebrow mb-4">By the numbers</p>
           <h2 className="display text-[clamp(2rem,5vw,3.6rem)]">
-            A network already <span className="text-amber">in motion.</span>
+            <TextReveal as="span">A network already</TextReveal>{" "}
+            <TextReveal as="span" className="text-amber" delay={260}>in motion.</TextReveal>
           </h2>
-        </Reveal>
+        </div>
 
         <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-[var(--line)] rounded-3xl overflow-hidden border border-[var(--line)]">
           {STATS.map((s, i) => (
