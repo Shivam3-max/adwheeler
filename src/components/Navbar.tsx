@@ -52,13 +52,13 @@ export default function Navbar() {
           style={scrolled ? { maxWidth: 1120 } : undefined}
         >
           <Link href="/" className="flex items-center shrink-0" aria-label={BRAND.name}>
-            <span className="inline-flex rounded-xl bg-[#061b4a] p-1">
+            <span className="inline-flex items-center rounded-full bg-[#061b4a] px-3 py-1.5 shadow-[0_4px_14px_rgba(6,27,74,0.18)] transition-transform duration-300 hover:scale-[1.02]">
               <Image
-                src="/adwheeler-logo.webp"
+                src="/adwheeler-header.webp"
                 alt="AdWheeler"
-                width={800}
-                height={574}
-                className="h-12 md:h-14 w-auto"
+                width={784}
+                height={468}
+                className="h-10 sm:h-11 md:h-12 w-auto"
               />
             </span>
           </Link>
