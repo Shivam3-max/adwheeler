@@ -73,9 +73,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="mt-10 text-xs text-[var(--faint)]">
-          © {new Date().getFullYear()} {BRAND.name}® · A product of Yellow Pop Media.
-        </p>
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs text-[var(--faint)]">
+            © {new Date().getFullYear()} {BRAND.name}® · A product of Yellow Pop Media.
+          </p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/yellow-pop-media.png"
+            alt="Yellow Pop Media"
+            width={128}
+            height={85}
+            className="h-16 w-auto object-contain"
+          />
+        </div>
       </div>
     </footer>
   );
