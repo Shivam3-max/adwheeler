@@ -33,7 +33,6 @@ export default function ContactForm() {
       </select>
       <textarea required placeholder="How can we help?" className="field" />
       <button className="btn btn-primary justify-center">Send message</button>
-      <p className="text-xs text-[var(--faint)]">Demo form — submissions are not stored.</p>
     </form>
   );
 }

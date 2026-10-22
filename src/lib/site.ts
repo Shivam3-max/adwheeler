@@ -1,5 +1,5 @@
 // ============================================================================
-// AD WHEELER 2.0 — central content source (placeholder data, swap later)
+// AD WHEELER 2.0 — central content source
 // ============================================================================
 
 export const BRAND = {
@@ -189,12 +189,12 @@ export const CASE_STUDIES = [
     title: "A moving storefront that lifted walk-ins 38%",
     cat: "Retail",
     challenge: "A rock-bottom-price fashion label opening in Eco City needed instant awareness with a tight budget.",
-    strategy: "Six Wheeler E3 units looped the 3km catchment around the store during peak shopping hours.",
+    strategy: "A single Wheeler E3 unit looped the 3km catchment around the store during peak shopping hours.",
     results: [
       { k: "Walk-in lift", v: "+38%" },
       { k: "Impressions", v: "3.4 L" },
       { k: "Cost / 1000", v: "₹18" },
-      { k: "Duration", v: "3 weeks" },
+      { k: "Duration", v: "4 weeks" },
     ],
   },
   {
@@ -203,7 +203,7 @@ export const CASE_STUDIES = [
     title: "Dinner-hour routing doubled delivery orders",
     cat: "QSR",
     challenge: "A pizza brand wanted orders, not just eyeballs — timed to hunger.",
-    strategy: "Dayparted creatives that only ran 6–10pm, routed through residential + office clusters.",
+    strategy: "Dayparted creatives that ran from 4–10 PM, routed through residential and office clusters.",
     results: [
       { k: "Order lift", v: "2.1×" },
       { k: "Impressions", v: "2.8 L" },

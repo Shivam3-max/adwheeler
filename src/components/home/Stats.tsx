@@ -15,7 +15,7 @@ export default function Stats() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-[var(--line)] rounded-3xl overflow-hidden border border-[var(--line)]">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-[var(--line)] rounded-3xl overflow-hidden border border-[var(--line)]">
           {STATS.map((s, i) => (
             <Reveal key={s.label} delay={i * 80} className="bg-[var(--bg)]">
               <div className="p-7 md:p-8 h-full hover:bg-[var(--surface)] transition-colors duration-500">
@@ -26,6 +26,14 @@ export default function Stats() {
               </div>
             </Reveal>
           ))}
+          <Reveal delay={STATS.length * 80} className="bg-[var(--bg)]">
+            <div className="p-7 md:p-8 h-full hover:bg-[var(--surface)] transition-colors duration-500">
+              <p className="font-display text-[clamp(2.2rem,5vw,3.4rem)] font-semibold text-amber leading-none" aria-hidden="true">
+                ∞
+              </p>
+              <p className="mt-3 text-sm text-[var(--muted)]">Infinite Possibilities</p>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

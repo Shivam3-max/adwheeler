@@ -74,7 +74,7 @@ export default function Footer() {
         </div>
 
         <p className="mt-10 text-xs text-[var(--faint)]">
-          © {new Date().getFullYear()} {BRAND.name}. Placeholder site — data for demonstration.
+          © {new Date().getFullYear()} {BRAND.name}® · A product of Yellow Pop Media.
         </p>
       </div>
     </footer>

@@ -11,14 +11,19 @@ const HQ_STATES = new Set(["ch", "pb", "hr"]);
 const HQ = CITIES.find((c) => c.hq)!;
 
 export default function IndiaMap() {
-  const [active, setActive] = useState<City | null>(null);
+  const [active, setActive] = useState<City>(HQ);
 
   return (
     <div className="grid lg:grid-cols-[1fr_0.85fr] gap-10 items-center">
       {/* map */}
       <div className="relative mx-auto w-full max-w-[440px]">
         <div className="pointer-events-none absolute inset-0 rounded-full blur-[90px] bg-[radial-gradient(circle,rgba(247,134,26,0.10),rgba(11,167,160,0.06),transparent_70%)]" />
-        <svg viewBox={map.viewBox} className="relative w-full h-auto overflow-visible">
+        <svg
+          viewBox={map.viewBox}
+          className="relative w-full h-auto overflow-visible"
+          role="group"
+          aria-label="Map of India showing AdWheeler's live coverage in Chandigarh and the Tricity"
+        >
           {/* states */}
           {map.locations.map((loc) => {
             const isHQ = HQ_STATES.has(loc.id);
@@ -26,9 +31,9 @@ export default function IndiaMap() {
               <path
                 key={loc.id}
                 d={loc.path}
-                fill={isHQ ? "rgba(247,134,26,0.18)" : "rgba(16,22,34,0.045)"}
-                stroke={isHQ ? "rgba(247,134,26,0.5)" : "rgba(16,22,34,0.14)"}
-                strokeWidth={isHQ ? 1.2 : 0.7}
+                fill={isHQ ? "rgba(247,134,26,0.34)" : "rgba(16,22,34,0.075)"}
+                stroke={isHQ ? "rgba(194,92,0,0.95)" : "rgba(16,22,34,0.28)"}
+                strokeWidth={isHQ ? 1.8 : 0.9}
               />
             );
           })}
@@ -57,7 +62,17 @@ export default function IndiaMap() {
                 transform={`translate(${c.x} ${c.y})`}
                 style={{ cursor: "pointer" }}
                 onMouseEnter={() => setActive(c)}
-                onMouseLeave={() => setActive(null)}
+                onFocus={() => setActive(c)}
+                onClick={() => setActive(c)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    setActive(c);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label={`${c.name}, ${c.status === "live" ? "live coverage" : "coming soon"}`}
                 data-cursor
               >
                 <circle r="12" fill="transparent" />
@@ -77,6 +92,20 @@ export default function IndiaMap() {
               </g>
             );
           })}
+
+          <text
+            x={HQ.x + 12}
+            y={HQ.y - 10}
+            fill="#9a4800"
+            stroke="white"
+            strokeWidth="3"
+            paintOrder="stroke"
+            fontSize="10"
+            fontWeight="700"
+            letterSpacing="0.5"
+          >
+            CHANDIGARH · TRICITY
+          </text>
         </svg>
       </div>
 

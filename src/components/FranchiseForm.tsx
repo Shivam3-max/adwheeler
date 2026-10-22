@@ -36,7 +36,6 @@ export default function FranchiseForm() {
       </select>
       <textarea placeholder="Tell us about yourself and your market (optional)" className="field sm:col-span-2" />
       <button className="btn btn-primary sm:col-span-2 justify-center">Submit application</button>
-      <p className="text-xs text-[var(--faint)] sm:col-span-2">Demo form — submissions are not stored.</p>
     </form>
   );
 }
