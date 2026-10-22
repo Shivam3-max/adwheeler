@@ -27,7 +27,7 @@ export default function VideoBlock() {
         <Reveal className="max-w-2xl mb-10">
           <p className="eyebrow mb-4">See it live</p>
           <h2 className="display text-[clamp(1.9rem,5vw,3.4rem)]">
-            This is your brand, <span className="text-amber font-bold italic">On The Move</span>
+            This is your brand, <span className="whitespace-nowrap text-amber font-bold italic">On The Move</span>
           </h2>
         </Reveal>
 
