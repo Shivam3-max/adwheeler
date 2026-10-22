@@ -175,8 +175,8 @@ export const JOURNEY = [
 ];
 
 export const CAMPAIGNS = [
-  { brand: "Elite Outfits", cat: "Retail", metric: "+38% walk-ins", quote: "Every evening it was a moving storefront.", area: "Panchkula" },
-  { brand: "Super Dan Pizza", cat: "QSR", metric: "2.1× orders", quote: "The dinner-hour window was pure genius.", area: "Sector 17, Chandigarh" },
+  { brand: "Elite Outfits", cat: "Retail", metric: "+38% walk-ins", quote: "Every evening it was a moving storefront.", area: "Panchkula", image: "/elite-outfits.webp" },
+  { brand: "Super Dan Pizza", cat: "QSR", metric: "2.1× orders", quote: "The dinner-hour window was pure genius.", area: "Sector 17, Chandigarh", image: "/super-dan-pizza.webp" },
   { brand: "Skyline Residences", cat: "Real Estate", metric: "410 site visits", quote: "We parked the ad right by the project.", area: "Zirakpur" },
   { brand: "Aveda Clinics", cat: "Healthcare", metric: "6.4 L reach", quote: "Launch-week visibility across the Tricity.", area: "Mohali" },
   { brand: "VoteForward", cat: "Political", metric: "92% ward cover", quote: "GPS proof-of-coverage sealed the deal.", area: "Panchkula" },
@@ -188,6 +188,7 @@ export const CASE_STUDIES = [
     brand: "Elite Outfits",
     title: "A moving storefront that lifted walk-ins 38%",
     cat: "Retail",
+    image: "/elite-outfits.webp",
     challenge: "A rock-bottom-price fashion label opening in Eco City needed instant awareness with a tight budget.",
     strategy: "A single Wheeler E3 unit looped the 3km catchment around the store during peak shopping hours.",
     results: [
@@ -202,6 +203,7 @@ export const CASE_STUDIES = [
     brand: "Super Dan Pizza",
     title: "Dinner-hour routing doubled delivery orders",
     cat: "QSR",
+    image: "/super-dan-pizza.webp",
     challenge: "A pizza brand wanted orders, not just eyeballs — timed to hunger.",
     strategy: "Dayparted creatives that ran from 4–10 PM, routed through residential and office clusters.",
     results: [

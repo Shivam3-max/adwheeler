@@ -1,5 +1,6 @@
 import { CAMPAIGNS } from "@/lib/site";
 import Reveal from "@/components/Reveal";
+import Image from "next/image";
 
 const GRADS = [
   "from-[#1358d8] to-[#0ba7a0]",
@@ -28,6 +29,15 @@ export default function Campaigns() {
             className="snap-start shrink-0 w-[300px] md:w-[360px] rounded-[26px] overflow-hidden border border-[var(--line)] group"
           >
             <div className={`relative h-52 bg-gradient-to-br ${GRADS[i % GRADS.length]} overflow-hidden`}>
+              {c.image && (
+                <Image
+                  src={c.image}
+                  alt={`${c.brand} mobile LED advertising campaign`}
+                  fill
+                  sizes="(max-width: 768px) 300px, 360px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              )}
               <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_20%_0%,rgba(0,0,0,0),rgba(0,0,0,0.45))]" />
               <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,rgba(0,0,0,0.4)_3px)]" />
               <span className="absolute top-4 left-4 chip !bg-black/30 !border-white/20 !text-white">{c.cat}</span>
