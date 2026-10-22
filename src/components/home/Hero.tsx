@@ -1,17 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Magnetic from "@/components/Magnetic";
 
 const ROTATE = ["brand", "message", "offer", "launch", "store"];
-
-const ADS = [
-  { l1: "YOUR AD", l2: "HERE", from: "#1358d8", to: "#0ba7a0" },
-  { l1: "ELITE", l2: "OUTFITS", from: "#c81e5a", to: "#f7861a" },
-  { l1: "SUPER DAN", l2: "PIZZA", from: "#f7861a", to: "#c81e5a" },
-  { l1: "GRAND", l2: "OPENING", from: "#0ba7a0", to: "#1358d8" },
-];
 
 export default function Hero() {
   const [wi, setWi] = useState(0);
@@ -67,151 +61,26 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ---- Animated road ---- */}
-      <div className="relative h-[240px] md:h-[280px] w-full">
-        {/* city silhouette */}
-        <div className="absolute bottom-[86px] md:bottom-[96px] inset-x-0 h-24 opacity-[0.5]">
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-full">
-            <g fill="rgba(16,22,34,0.06)">
-              {Array.from({ length: 26 }).map((_, i) => {
-                const w = 30 + ((i * 37) % 34);
-                const h = 30 + ((i * 53) % 78);
-                return <rect key={i} x={i * 47} y={120 - h} width={w} height={h} rx="2" />;
-              })}
-            </g>
-          </svg>
-        </div>
-
-        {/* road surface */}
-        <div className="absolute bottom-0 inset-x-0 h-[86px] md:h-[96px] bg-[linear-gradient(180deg,#eceef2,#e2e5ea)] border-t border-[var(--line)]">
-          {/* dashed center line (transform-animated for smoothness) */}
-          <div className="absolute top-1/2 -translate-y-1/2 inset-x-0 h-[4px] overflow-hidden">
-            <div
-              className="h-full w-[200%]"
-              style={{
-                backgroundImage: "repeating-linear-gradient(90deg, var(--amber) 0 60px, transparent 60px 120px)",
-                backgroundSize: "220px 4px",
-                animation: "dash-move 1.4s linear infinite",
-                opacity: 0.6,
-                willChange: "transform",
-              }}
-            />
+      {/* Real campaign photography grounds the hero in an actual deployment. */}
+      <div className="wrap w-full pb-8 md:pb-12">
+        <div className="relative h-[230px] sm:h-[300px] md:h-[390px] overflow-hidden rounded-[28px] md:rounded-[36px] border border-black/10 bg-[#111] shadow-[0_28px_80px_rgba(16,22,34,0.2)]">
+          <Image
+            src="/elite-outfits.webp"
+            alt="AdWheeler LED advertising vehicle outside Elite Outfits at night"
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 1280px"
+            className="object-cover object-[50%_68%]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/5 to-black/10" />
+          <div className="absolute bottom-5 left-5 md:bottom-8 md:left-8 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/35 px-4 py-2 text-xs font-medium tracking-wide text-white backdrop-blur-md">
+            <span className="h-2 w-2 rounded-full bg-[#20d69a] shadow-[0_0_12px_rgba(32,214,154,0.8)]" />
+            LIVE ON THE STREETS
           </div>
         </div>
-
-        {/* the LED vehicles (two, staggered, so the road is never empty) */}
-        {[0, -6.5].map((delay, i) => (
-          <div
-            key={i}
-            className="absolute bottom-[64px] md:bottom-[72px] left-0"
-            style={{
-              animation: `car-drive 13s linear ${delay}s infinite`,
-              willChange: "transform",
-              backfaceVisibility: "hidden",
-            }}
-          >
-            <div style={{ animation: "car-bob 1.2s ease-in-out infinite" }}>
-              <Vehicle />
-            </div>
-          </div>
-        ))}
       </div>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-[var(--line)]" />
     </section>
-  );
-}
-
-function Vehicle() {
-  return (
-    <div className="relative">
-      <div className="relative">
-        {/* Polished side-profile: LED billboard on the rear, cab + headlight up front
-            (right) so the vehicle reads as driving forward, left → right. */}
-        <svg viewBox="0 0 240 152" className="w-[156px] md:w-[192px] drop-shadow-[0_16px_20px_rgba(16,22,34,0.20)]">
-          <defs>
-            <linearGradient id="v-body" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#ffbe50" />
-              <stop offset="1" stopColor="#ef8c12" />
-            </linearGradient>
-            <linearGradient id="v-cab" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#ffcd6e" />
-              <stop offset="1" stopColor="#f19a1e" />
-            </linearGradient>
-            <linearGradient id="v-glass" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="#d6ecff" />
-              <stop offset="1" stopColor="#8ec0e8" />
-            </linearGradient>
-            <radialGradient id="v-head" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0" stopColor="#fff6d8" />
-              <stop offset="1" stopColor="#ffd34d" />
-            </radialGradient>
-          </defs>
-
-          {/* ground shadow */}
-          <ellipse cx="120" cy="143" rx="101" ry="6.5" fill="rgba(16,22,34,0.12)" />
-
-          {/* base skirt */}
-          <rect x="22" y="108" width="190" height="12" rx="4" fill="url(#v-body)" />
-
-          {/* LED billboard housing (rear / left) */}
-          <rect x="16" y="20" width="110" height="95" rx="11" fill="#17181d" />
-          <rect x="22" y="13" width="98" height="9" rx="4" fill="#0e0f12" />
-          {/* screen well (covered by the HTML ad overlay) */}
-          <rect x="25" y="30" width="92" height="74" rx="6" fill="#0a0c12" />
-          <rect x="25" y="30" width="92" height="74" rx="6" fill="none" stroke="rgba(255,255,255,0.10)" />
-
-          {/* cab (front / right) */}
-          <path d="M123 110 L123 66 Q123 57 132 55 L151 51 L187 51 Q199 51 203 66 L209 110 Z" fill="url(#v-cab)" stroke="#cf6f08" strokeWidth="1.5" strokeLinejoin="round" />
-          {/* roof highlight */}
-          <path d="M136 56 L185 53 Q195 53 198 63 L136 63 Z" fill="rgba(255,255,255,0.22)" />
-          {/* windshield */}
-          <path d="M153 60 L184 60 Q191 60 194 69 L198 87 L153 87 Z" fill="url(#v-glass)" />
-          <path d="M153 60 L160 60 L156 87 L153 87 Z" fill="rgba(255,255,255,0.28)" />
-          {/* door seam */}
-          <line x1="153" y1="61" x2="153" y2="108" stroke="#cf6f08" strokeWidth="1.5" />
-          {/* door handle */}
-          <rect x="162" y="95" width="12" height="3" rx="1.5" fill="#cf6f08" />
-          {/* bumper + headlight */}
-          <rect x="203" y="102" width="9" height="10" rx="3" fill="#2a2d34" />
-          <ellipse cx="206" cy="94" rx="4.5" ry="6.5" fill="url(#v-head)" />
-
-          {/* wheels (spokes spin via .wheel) */}
-          {[66, 172].map((cx) => (
-            <g className="wheel" key={cx}>
-              <circle cx={cx} cy={122} r="16" fill="#15171c" />
-              <circle cx={cx} cy={122} r="9" fill="#3b404a" />
-              <g stroke="#5a606b" strokeWidth="2">
-                <line x1={cx} y1={109} x2={cx} y2={135} />
-                <line x1={cx - 13} y1={122} x2={cx + 13} y2={122} />
-                <line x1={cx - 9} y1={113} x2={cx + 9} y2={131} />
-                <line x1={cx + 9} y1={113} x2={cx - 9} y2={131} />
-              </g>
-              <circle cx={cx} cy={122} r="3" fill="#1c1f25" />
-            </g>
-          ))}
-        </svg>
-
-        {/* ad banners overlaid on the LED screen well (x25 y30 w92 h74 of 240×152) */}
-        <div className="absolute" style={{ left: "10.4%", top: "19.7%", width: "38.3%", height: "48.7%" }}>
-          <div className="led-screen relative w-full h-full rounded-[5px] overflow-hidden">
-            {ADS.map((ad, i) => (
-              <div
-                key={i}
-                className="absolute inset-0 grid place-content-center text-center leading-none"
-                style={{
-                  background: `linear-gradient(135deg, ${ad.from}, ${ad.to})`,
-                  animation: `ad-cycle 8s ${i * 2}s infinite`,
-                  opacity: 0,
-                }}
-              >
-                <span className="font-display font-bold text-white text-[9px] md:text-[11px]">{ad.l1}</span>
-                <span className="font-display font-bold text-white/90 text-[8px] md:text-[10px]">{ad.l2}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
