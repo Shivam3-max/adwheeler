@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NAV, BRAND } from "@/lib/site";
@@ -51,14 +52,15 @@ export default function Navbar() {
           style={scrolled ? { maxWidth: 1120 } : undefined}
         >
           <Link href="/" className="flex items-center shrink-0" aria-label={BRAND.name}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/adwheeler-logo.png"
-              alt="AdWheeler"
-              width={94}
-              height={50}
-              className="h-9 md:h-10 w-auto"
-            />
+            <span className="inline-flex rounded-xl bg-[#061b4a] p-1">
+              <Image
+                src="/adwheeler-logo.webp"
+                alt="AdWheeler"
+                width={800}
+                height={574}
+                className="h-12 md:h-14 w-auto"
+              />
+            </span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { NAV, BRAND } from "@/lib/site";
 
 export default function Footer() {
@@ -62,8 +63,9 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/adwheeler-logo.png" alt="AdWheeler" width={132} height={70} className="h-14 w-auto" />
+            <span className="inline-flex w-fit rounded-xl bg-[#061b4a] p-1.5">
+              <Image src="/adwheeler-logo.webp" alt="AdWheeler" width={800} height={574} className="h-20 w-auto" />
+            </span>
             <p className="text-sm text-[var(--muted)] mt-3 max-w-sm">{BRAND.tagline}</p>
           </div>
           <div className="text-sm text-[var(--muted)] space-y-1 md:text-right">
@@ -77,12 +79,11 @@ export default function Footer() {
           <p className="text-xs text-[var(--faint)]">
             © {new Date().getFullYear()} {BRAND.name}® · A product of Yellow Pop Media.
           </p>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/yellow-pop-media.png"
+          <Image
+            src="/yellow-pop-media.webp"
             alt="Yellow Pop Media"
-            width={128}
-            height={85}
+            width={640}
+            height={425}
             className="h-16 w-auto object-contain"
           />
         </div>
