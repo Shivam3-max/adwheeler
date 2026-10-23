@@ -56,8 +56,8 @@ export default function Navbar() {
               <Image
                 src="/adwheeler-logo.webp"
                 alt="AdWheeler"
-                width={800}
-                height={574}
+                width={2825}
+                height={2001}
                 className="h-12 sm:h-14 md:h-16 w-auto"
               />
             </span>
