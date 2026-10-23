@@ -63,7 +63,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
-            <span className="inline-flex w-fit rounded-xl bg-[#061b4a] p-1.5">
+            <span className="inline-flex w-fit rounded-xl p-1.5">
               <Image src="/adwheeler-logo.webp" alt="AdWheeler" width={2825} height={2001} className="h-20 w-auto" />
             </span>
             <p className="text-sm text-[var(--muted)] mt-3 max-w-sm">{BRAND.tagline}</p>

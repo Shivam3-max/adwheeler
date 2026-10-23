@@ -52,7 +52,7 @@ export default function Navbar() {
           style={scrolled ? { maxWidth: 1120 } : undefined}
         >
           <Link href="/" className="flex items-center shrink-0" aria-label={BRAND.name}>
-            <span className="inline-flex items-center justify-center overflow-hidden rounded-[26px] bg-[#061b4a] p-1.5 shadow-[0_4px_14px_rgba(6,27,74,0.18)] transition-transform duration-300 hover:scale-[1.02]">
+            <span className="inline-flex items-center justify-center overflow-hidden rounded-[26px] p-1.5 transition-transform duration-300 hover:scale-[1.02]">
               <Image
                 src="/adwheeler-logo.webp"
                 alt="AdWheeler"
