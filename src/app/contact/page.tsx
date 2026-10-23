@@ -6,7 +6,7 @@ import { BRAND } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Book a demo, start a campaign, or enquire about a franchise territory.",
+  description: "Start a campaign, ask about a franchise territory, or contact the AdWheeler team.",
 };
 
 const OFFICES = [
@@ -22,7 +22,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title={<>Let&apos;s put your brand <span className="text-gradient">in motion.</span></>}
-        sub="Book a demo, plan a campaign, or explore a franchise. We usually reply within a day."
+        sub="Discuss a campaign, explore a franchise, or speak with our team. We usually reply within a day."
       />
 
       <section className="section pt-4">

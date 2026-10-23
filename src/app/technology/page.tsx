@@ -74,7 +74,7 @@ export default function TechnologyPage() {
         </div>
       </section>
 
-      <CTABand title="See the platform in action." primary={{ label: "Book a demo", href: "/contact" }} secondary={{ label: "Plan a campaign", href: "/campaign-planner" }} />
+      <CTABand title="See the platform in action." primary={{ label: "Talk to our team", href: "/contact" }} secondary={{ label: "Plan a campaign", href: "/campaign-planner" }} />
     </>
   );
 }

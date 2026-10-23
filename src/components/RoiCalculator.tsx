@@ -45,8 +45,8 @@ export default function RoiCalculator() {
         <Result k="Year-1 ROI" v={`${model.roi.toFixed(0)}%`} accent />
       </div>
       <p className="mt-4 text-xs text-[var(--faint)]">
-        Illustrative model with placeholder figures. Actual returns vary by city,
-        contracts and operations.
+        Projection based on the assumptions above. Actual results vary by city,
+        contract rates, utilization and operating costs.
       </p>
     </div>
   );
