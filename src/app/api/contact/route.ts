@@ -1,5 +1,5 @@
 import { BRAND } from "@/lib/site";
-import { sendResendEmail } from "@/lib/email";
+import { createBrandedEmail, sendResendEmail } from "@/lib/email";
 
 const TOPICS = new Set(["Book a campaign", "Franchise enquiry", "Partnership", "Support", "Other"]);
 const RATE_WINDOW_MS = 15 * 60 * 1000;
@@ -108,6 +108,19 @@ export async function POST(request: Request) {
     replyTo: email,
     subject,
     text,
+    html: createBrandedEmail({
+      preheader: `New ${topic.toLowerCase()} enquiry from ${name}.`,
+      label: "Website enquiry",
+      title: `New enquiry · ${topic}`,
+      intro: "A visitor has sent a message through the AdWheeler website.",
+      details: [
+        ["Name", name],
+        ["Phone", phone],
+        ["Email", email],
+        ["Enquiry type", topic],
+      ],
+      message,
+    }),
   });
 
   if (leadResult !== "sent") {
@@ -129,6 +142,15 @@ export async function POST(request: Request) {
       "AdWheeler Team",
       BRAND.email,
     ].join("\n"),
+    html: createBrandedEmail({
+      preheader: "We received your message and will get back to you within three business days.",
+      label: "Thanks for reaching out",
+      title: `Thanks, ${name}. We’ve got your message.`,
+      intro: "Your enquiry is safely with our team. We’ll get back to you within three business days.",
+      details: [["Enquiry type", topic]],
+      buttonLabel: "Visit AdWheeler",
+      buttonUrl: "https://adwheeler.in",
+    }),
   });
 
   if (confirmationResult !== "sent") {

@@ -1,5 +1,5 @@
 import { CITIES } from "@/lib/site";
-import { sendResendEmail } from "@/lib/email";
+import { createBrandedEmail, sendResendEmail } from "@/lib/email";
 
 const INVESTMENT_RANGES = new Set([
   "₹10–15 lakhs",
@@ -115,6 +115,20 @@ export async function POST(request: Request) {
     replyTo: email,
     subject: `Franchise application — ${name} — ${preferredCity}`,
     text: leadText,
+    html: createBrandedEmail({
+      preheader: `New franchise application from ${name} for ${preferredCity}.`,
+      label: "Franchise application",
+      title: "A new franchise enquiry is in.",
+      intro: "A prospective franchise partner submitted an application on the AdWheeler website.",
+      details: [
+        ["Name", name],
+        ["Phone", phone],
+        ["Email", email],
+        ["Preferred city", preferredCity],
+        ["Investment capacity", investmentCapacity],
+      ],
+      message: message || "No additional message provided.",
+    }),
   });
 
   if (leadResult === "not-configured") {
@@ -140,6 +154,19 @@ export async function POST(request: Request) {
       "Regards,",
       "AdWheeler Franchise Team",
     ].join("\n"),
+    replyTo: "franchise@adwheeler.in",
+    html: createBrandedEmail({
+      preheader: "Your AdWheeler franchise application has been received.",
+      label: "Franchise enquiry received",
+      title: `Thanks for your interest, ${name}.`,
+      intro: "We’ve received your application. Our franchise team will review the details and contact you within two business days.",
+      details: [
+        ["Preferred city", preferredCity],
+        ["Investment capacity", investmentCapacity],
+      ],
+      buttonLabel: "Explore AdWheeler",
+      buttonUrl: "https://adwheeler.in",
+    }),
   });
 
   if (confirmationResult !== "sent") {
