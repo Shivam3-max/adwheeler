@@ -30,9 +30,11 @@ export default function FranchiseForm() {
       </select>
       <select required defaultValue="" className="field">
         <option value="" disabled>Investment capacity</option>
-        <option>₹18 L – ₹40 L</option>
-        <option>₹40 L – ₹1 Cr</option>
-        <option>₹1 Cr+</option>
+        <option>₹10–15 lakhs</option>
+        <option>₹15–25 lakhs</option>
+        <option>₹25–50 lakhs</option>
+        <option>₹50 lakhs–₹1 crore</option>
+        <option>₹1 crore+</option>
       </select>
       <textarea placeholder="Tell us about yourself and your market (optional)" className="field sm:col-span-2" />
       <button className="btn btn-primary sm:col-span-2 justify-center">Submit application</button>
