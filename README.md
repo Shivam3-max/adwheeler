@@ -16,6 +16,17 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Contact email
+
+The contact form sends enquiries through Resend using the `/api/contact` route. Before enabling delivery:
+
+1. Verify `adwheeler.in` in Resend and add the DNS records Resend provides.
+2. Create a sending API key and add it to the Hostinger Node.js app environment as `RESEND_API_KEY`.
+3. Set `RESEND_FROM_EMAIL` only if you want a sender other than `AdWheeler Website <website@adwheeler.in>`.
+4. Restart or redeploy the app after changing its environment variables.
+
+Never commit the real API key. `.env.example` documents the required variables; the actual `.env` files remain ignored by Git.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
