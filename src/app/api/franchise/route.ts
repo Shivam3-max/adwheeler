@@ -5,8 +5,6 @@ const INVESTMENT_RANGES = new Set([
   "₹10–15 lakhs",
   "₹15–25 lakhs",
   "₹25–50 lakhs",
-  "₹50 lakhs–₹1 crore",
-  "₹1 crore+",
 ]);
 const RATE_WINDOW_MS = 15 * 60 * 1000;
 const RATE_LIMIT = 5;

@@ -74,8 +74,6 @@ export default function FranchiseForm() {
         <option>₹10–15 lakhs</option>
         <option>₹15–25 lakhs</option>
         <option>₹25–50 lakhs</option>
-        <option>₹50 lakhs–₹1 crore</option>
-        <option>₹1 crore+</option>
       </select>
       <textarea name="message" maxLength={5000} placeholder="Tell us about yourself and your market (optional)" className="field sm:col-span-2" />
 
