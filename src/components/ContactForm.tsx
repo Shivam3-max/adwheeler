@@ -54,7 +54,7 @@ export default function ContactForm() {
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="var(--cyan)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </div>
           <h3 className="text-2xl mb-2">Message sent.</h3>
-          <p className="text-[var(--muted)] text-sm">We&apos;ll get back to you within one business day.</p>
+          <p className="text-[var(--muted)] text-sm">We&apos;ll get back to you within three business days.</p>
         </div>
       </div>
     );
