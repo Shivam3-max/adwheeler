@@ -7,6 +7,7 @@ export default function FranchiseForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -25,6 +26,7 @@ export default function FranchiseForm() {
           phone: fields.get("phone"),
           email: fields.get("email"),
           city: fields.get("city"),
+          otherCity: fields.get("otherCity"),
           investmentCapacity: fields.get("investmentCapacity"),
           message: fields.get("message"),
           website: fields.get("website"),
@@ -39,6 +41,7 @@ export default function FranchiseForm() {
       setSuccessMessage(result?.message || "Our franchise team will contact you within two business days.");
       setStatus("sent");
       form.reset();
+      setSelectedCity("");
     } catch (error) {
       setStatus("error");
       if (error instanceof Error) {
@@ -64,11 +67,21 @@ export default function FranchiseForm() {
       <input required name="name" maxLength={120} autoComplete="name" placeholder="Full name" className="field" />
       <input required name="phone" type="tel" maxLength={40} autoComplete="tel" placeholder="Phone" className="field" />
       <input required name="email" type="email" maxLength={254} autoComplete="email" placeholder="Email" className="field sm:col-span-2" />
-      <select required name="city" defaultValue="" className="field">
+      <select required name="city" value={selectedCity} onChange={(event) => setSelectedCity(event.target.value)} className="field">
         <option value="" disabled>Preferred city</option>
         {CITIES.map((city) => <option key={city.name} value={city.name}>{city.name}</option>)}
         <option value="other">Other</option>
       </select>
+      {selectedCity === "other" && (
+        <input
+          required
+          name="otherCity"
+          maxLength={120}
+          autoComplete="address-level2"
+          placeholder="Which city are you considering?"
+          className="field"
+        />
+      )}
       <select required name="investmentCapacity" defaultValue="" className="field">
         <option value="" disabled>Investment capacity</option>
         <option>₹10–15 lakhs</option>

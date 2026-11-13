@@ -63,10 +63,12 @@ export async function POST(request: Request) {
     return json({ message: "Application received." }, 200);
   }
 
-  const name = typeof fields.name === "string" ? fields.name.trim() : "";
+  const name = typeof fields.name === "string" ? fields.name.trim().replace(/[\r\n]+/g, " ") : "";
   const phone = typeof fields.phone === "string" ? fields.phone.trim() : "";
   const email = typeof fields.email === "string" ? fields.email.trim() : "";
   const city = typeof fields.city === "string" ? fields.city : "";
+  const otherCity = typeof fields.otherCity === "string" ? fields.otherCity.trim().replace(/[\r\n]+/g, " ") : "";
+  const preferredCity = city === "other" ? otherCity : city;
   const investmentCapacity = typeof fields.investmentCapacity === "string" ? fields.investmentCapacity : "";
   const message = typeof fields.message === "string" ? fields.message.trim() : "";
   const validCities = new Set([...CITIES.map((item) => item.name), "other"]);
@@ -76,6 +78,7 @@ export async function POST(request: Request) {
     !phone || phone.length > 40 ||
     !email || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
     !validCities.has(city) ||
+    (city === "other" && (!otherCity || otherCity.length > 120)) ||
     !INVESTMENT_RANGES.has(investmentCapacity) ||
     message.length > 5000
   ) {
@@ -100,7 +103,7 @@ export async function POST(request: Request) {
     `Name: ${name}`,
     `Phone: ${phone}`,
     `Email: ${email}`,
-    `Preferred city: ${city === "other" ? "Other" : city}`,
+    `Preferred city: ${preferredCity}`,
     `Investment capacity: ${investmentCapacity}`,
     "",
     "About the applicant / market:",
@@ -110,7 +113,7 @@ export async function POST(request: Request) {
   const leadResult = await sendResendEmail({
     to: "franchise@adwheeler.in",
     replyTo: email,
-    subject: `Franchise application — ${name} — ${city === "other" ? "Other" : city}`,
+    subject: `Franchise application — ${name} — ${preferredCity}`,
     text: leadText,
   });
 
@@ -129,7 +132,7 @@ export async function POST(request: Request) {
       "",
       "Thank you for your interest in an AdWheeler franchise. We’ve received your application and our franchise team will review it.",
       "",
-      `Preferred city: ${city === "other" ? "Other" : city}`,
+      `Preferred city: ${preferredCity}`,
       `Investment capacity: ${investmentCapacity}`,
       "",
       "Our team will contact you within two business days.",
