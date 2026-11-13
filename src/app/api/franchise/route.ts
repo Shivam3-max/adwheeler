@@ -148,7 +148,7 @@ export async function POST(request: Request) {
 
   return json({
     message: confirmationResult === "sent"
-      ? "A confirmation email is on its way. Our franchise team will contact you within two business days."
-      : "Our franchise team will contact you within two business days.",
+      ? "Application received. A confirmation email is on its way. Our franchise team will contact you within two business days."
+      : "Application received, but we couldn’t send a confirmation email. Our franchise team will contact you within two business days.",
   }, 200);
 }

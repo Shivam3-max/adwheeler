@@ -1,4 +1,5 @@
 import { BRAND } from "@/lib/site";
+import { sendResendEmail } from "@/lib/email";
 
 const TOPICS = new Set(["Book a campaign", "Franchise enquiry", "Partnership", "Support", "Other"]);
 const RATE_WINDOW_MS = 15 * 60 * 1000;
@@ -80,7 +81,6 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM_EMAIL || "AdWheeler Website <website@adwheeler.in>";
   if (!apiKey) {
     console.error("Contact email service is missing RESEND_API_KEY.");
     return json({ error: "Our email service is not set up yet. Please call or WhatsApp us instead." }, 503);
@@ -103,31 +103,38 @@ export async function POST(request: Request) {
     message,
   ].join("\n");
 
-  try {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from,
-        to: [BRAND.email],
-        reply_to: email,
-        subject,
-        text,
-      }),
-      cache: "no-store",
-    });
+  const leadResult = await sendResendEmail({
+    to: BRAND.email,
+    replyTo: email,
+    subject,
+    text,
+  });
 
-    if (!response.ok) {
-      console.error(`Resend rejected a contact email with status ${response.status}.`);
-      return json({ error: "We couldn’t send your message. Please try again later." }, 502);
-    }
-
-    return json({ message: "Message sent." }, 200);
-  } catch {
-    console.error("Could not reach the email service for a contact submission.");
-    return json({ error: "We couldn’t reach our email service. Please try again later." }, 502);
+  if (leadResult !== "sent") {
+    return json({ error: "We couldn’t send your message. Please try again later." }, leadResult === "not-configured" ? 503 : 502);
   }
+
+  const confirmationResult = await sendResendEmail({
+    to: email,
+    replyTo: BRAND.email,
+    subject: "We received your message — AdWheeler",
+    text: [
+      `Hi ${name},`,
+      "",
+      "Thanks for contacting AdWheeler. We’ve received your message and our team will get back to you within three business days.",
+      "",
+      `Enquiry type: ${topic}`,
+      "",
+      "Regards,",
+      "AdWheeler Team",
+      BRAND.email,
+    ].join("\n"),
+  });
+
+  if (confirmationResult !== "sent") {
+    console.error("Contact enquiry was delivered, but its confirmation email was not sent.");
+    return json({ message: "Message received. We couldn’t send a receipt email, but our team will get back to you within three business days." }, 200);
+  }
+
+  return json({ message: "Message received. A confirmation email is on its way." }, 200);
 }

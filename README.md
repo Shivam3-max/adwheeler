@@ -22,8 +22,10 @@ The contact and franchise forms send messages through Resend using `/api/contact
 
 1. Verify `adwheeler.in` in Resend and add the DNS records Resend provides.
 2. Create a sending API key and add it to the Hostinger Node.js app environment as `RESEND_API_KEY`.
-3. Set `RESEND_FROM_EMAIL` only if you want a sender other than `AdWheeler Website <website@adwheeler.in>`.
+3. Set `RESEND_FROM_EMAIL` only if you want a sender other than `AdWheeler Team <website@adwheeler.in>`.
 4. Restart or redeploy the app after changing its environment variables.
+
+Both forms send a receipt email to the person who submitted the form. Inbox placement is controlled by the receiving mail provider; confirm the domain's SPF, DKIM, and DMARC authentication in Resend and review each message's delivery events there if emails land in spam.
 
 Never commit the real API key. `.env.example` documents the required variables; the actual `.env` files remain ignored by Git.
 

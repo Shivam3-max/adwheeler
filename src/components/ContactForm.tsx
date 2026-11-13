@@ -7,6 +7,7 @@ const TOPICS = ["Book a campaign", "Franchise enquiry", "Partnership", "Support"
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -31,11 +32,12 @@ export default function ContactForm() {
         body: JSON.stringify(payload),
       });
 
+      const result = await response.json().catch(() => null);
       if (!response.ok) {
-        const result = await response.json().catch(() => null);
         throw new Error(result?.error || "We couldn’t send your message. Please try again.");
       }
 
+      setSuccessMessage(result?.message || "Message received. We’ll get back to you within three business days.");
       setStatus("sent");
       form.reset();
     } catch (error) {
@@ -54,7 +56,7 @@ export default function ContactForm() {
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="var(--cyan)" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </div>
           <h3 className="text-2xl mb-2">Message sent.</h3>
-          <p className="text-[var(--muted)] text-sm">We&apos;ll get back to you within three business days.</p>
+          <p className="text-[var(--muted)] text-sm">{successMessage}</p>
         </div>
       </div>
     );
