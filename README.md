@@ -18,7 +18,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Contact email
 
-The contact form sends enquiries through Resend using the `/api/contact` route. Before enabling delivery:
+The contact and franchise forms send messages through Resend using `/api/contact` and `/api/franchise`. Franchise applications go to `franchise@adwheeler.in`; applicants receive an acknowledgement email. Before enabling delivery:
 
 1. Verify `adwheeler.in` in Resend and add the DNS records Resend provides.
 2. Create a sending API key and add it to the Hostinger Node.js app environment as `RESEND_API_KEY`.
